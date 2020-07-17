@@ -2,17 +2,60 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+    <div class="container">
+      <!--Navbar-->
+      <nav class="navbar center">
+          <a href="#section-intro" class="navbar-link">Home</a>
+          <a href="#section-description" class="navbar-link">About me</a>
+          <a href="#section-projects-skills" class="navbar-link">Projects&Skills</a>
+          <a href="#section-gallery" class="navbar-link">Gallery</a>
+          <a href="#section-blog" class="navbar-link">Blog posts</a>
+          <a href="#section-facts" class="navbar-link">Fun Facts</a>
+          <a href="#section-contact" class="navbar-link">Contact</a>
+      </nav>
+      <div class="sections">
+        <!-- section for introductory content-->
+        <section class="section-intro">
+        <h1 class="section-intro-title">Alexandra Irina Bulaceanu</h1>
+        <p style="color:white; font-size:15px">This is my portfolio and my first starter project.</p>
+        <p style="color:white; font-size:15px">Hi! My name is Alexandra Bulaceanu and I am a Computer Science student at the University of Bucharest. I also study Economic Informatics at the Academy of Economic Studies. I am currently a STEP intern at Google.</p>
+            <img src="images/me.jpg" alt="me" class="intro-img">
+        <h3 class="job-position">STEP intern</h3>
+        <a href="#section-facts" class="section-intro-btn1">Fun facts about me</a>
+        <button class="section-intro-btn2"><i class="fa fa-download"></i> Download CV</button>
+        <!--</section>-->
+        <!--Section 2 - paragraphs explaining my background-->
+        <section class="section-description">
+            <div class="general">
+            <h2>General information about me</h2>
+            <p>I am 20 years old. I live in Bucharest(Romania) since I was 6, but I was born in Alexandria.</p>
+            </div>
+            <div class="education">
+            <h2>Education<h2>
+            <p>I graduated from National College of Computer Science "Tudor Vianu" and I am now a student that has just finised the first year at uni. I have completed numerous computer science courses during this time.<p>
+            </div>
+            <div class="Why Programming">
+            <h2>Why do I like programming</h2>
+            <p>I am a coding enthusiast that finds the programming world as being one of the most fascinating things that exist, because of the fact that it is one of the very few context in which you can create your own universe, establish your very own rules and let your creativity run free and express your mind through all the lines of code. Also it is an area in which you meet extraordinary people and you get the chance to develop products that really have a positive impact on society. Through computer science you can be a life-changer for somebody. You know, not all heroes wear capes.</p>
+            </div>
+            <div class="Hobbies">
+            <h2>Hobbies</h2>
+            <p></p>
+            </div>
+        <!--</section> -->
+       
+        </div>
+        <p>Click here to get a random message:</p>
+        <button onclick="addRandomGreeting()">Hello</button>
+        <div id="greeting-container"></div>
+      </div>
     </div>
   </body>
 </html>
