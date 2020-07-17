@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/9f16f7b96d.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -22,40 +23,166 @@
       </nav>
       <div class="sections">
         <!-- section for introductory content-->
-        <section class="section-intro">
+        <section class="section-intro" id="section-intro">
         <h1 class="section-intro-title">Alexandra Irina Bulaceanu</h1>
         <p style="color:white; font-size:15px">This is my portfolio and my first starter project.</p>
         <p style="color:white; font-size:15px">Hi! My name is Alexandra Bulaceanu and I am a Computer Science student at the University of Bucharest. I also study Economic Informatics at the Academy of Economic Studies. I am currently a STEP intern at Google.</p>
+            <br></br>
             <img src="images/me.jpg" alt="me" class="intro-img">
-        <h3 class="job-position">STEP intern</h3>
+        <div class="job-position">
+        <h3>STEP intern</h3>
+        </div>
         <a href="#section-facts" class="section-intro-btn1">Fun facts about me</a>
-        <button class="section-intro-btn2"><i class="fa fa-download"></i> Download CV</button>
-        <!--</section>-->
+        <br></br>
+        <button class="section-intro-btn2" onclick="location.href='https://drive.google.com/file/d/1YU7vHWGkBulJK3KsWFsfuuF3saU-yd5p/view?usp=sharing'"><i class="fa fa-download"></i> Download CV</button>
+        </section>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <!--Section 2 - paragraphs explaining my background-->
-        <section class="section-description">
-            <div class="general">
-            <h2>General information about me</h2>
-            <p>I am 20 years old. I live in Bucharest(Romania) since I was 6, but I was born in Alexandria.</p>
+        <section class="section-description" id="section-description">
+            <h1 class=" desc-title" style="color:aliceblue; font-size:20px; background-color:cadetblue;">About me</h1>
+            <br></br>
+            <div class="row">
+                <div class="column" style="background-color:#99d5d5">
+                <h2 style="color:aliceblue">General information</h2>
+                <p style="color:aliceblue; font-size:15px">I am 20 years old. I live in Bucharest(Romania) since I was 6, but I was born in Alexandria.</p>
+                </div>
+                <br></br>
+                <div class="column" style="background-color:#4cb6b6">
+                <h2 style="color:aliceblue">Education<h2>
+                <p style="color:aliceblue; font-size:15px">I graduated from National College of Computer Science "Tudor Vianu" and I am now a student that has just finised the first year at uni. I have completed numerous computer science courses during this time.<p>
+                </div>
+                <br></br>
+                <div class="column" style="background-color:#009797">
+                <h2 style="color:aliceblue">Why do I like programming</h2>
+                <p style="color:aliceblue; font-size:15px">I am a coding enthusiast that finds the programming world as being one of the most fascinating things that exist, because of the fact that it is one of the very few context in which you can create your own universe, establish your very own rules and let your creativity run free and express your mind through all the lines of code. Also it is an area in which you meet extraordinary people and you get the chance to develop products that really have a positive impact on society. Through computer science you can be a life-changer for somebody. You know, not all heroes wear capes.</p>
+                </div>
+                <br></br>
+                <div class="column" style="background-color:teal">
+                <h2 style="color:aliceblue">Hobbies</h2>
+                <p style="color:aliceblue; font-size:15px">My hobbies are reading, writing, dancing, listening to music, watching TV series, traveling and learning new languages.</p>
+                </div>
             </div>
-            <div class="education">
-            <h2>Education<h2>
-            <p>I graduated from National College of Computer Science "Tudor Vianu" and I am now a student that has just finised the first year at uni. I have completed numerous computer science courses during this time.<p>
+        </section> 
+        <br></br>
+        <section class="section-projects-skills" id="section-projects-skills">
+            <h1 class="section-projects-title" style="color: aliceblue; font-size: 20px; background-color:cadetblue">Projects</h1>
+            <br></br>
+            <div class="projects">
+            <div class="project" style="background-color:teal">
+                <h2 style="color:aliceblue;">Smart Calendar</h2>
+                <p style="color:aliceblue; font-size:15px;">It is a website where you can check what task do you need to complete and which day, designed with javascript, ajax and node.js</p>
+                <a href="https://www.github.com/AlexandraBulaceanu/Proiect-TW--SMART-CALENDAR">Check it out!</a>
             </div>
-            <div class="Why Programming">
-            <h2>Why do I like programming</h2>
-            <p>I am a coding enthusiast that finds the programming world as being one of the most fascinating things that exist, because of the fact that it is one of the very few context in which you can create your own universe, establish your very own rules and let your creativity run free and express your mind through all the lines of code. Also it is an area in which you meet extraordinary people and you get the chance to develop products that really have a positive impact on society. Through computer science you can be a life-changer for somebody. You know, not all heroes wear capes.</p>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div class="project" style="background-color:teal">
+                <h2 style="color:aliceblue">Supplied</h2>
+                <p style="color:aliceblue; font-size:15px;">Supplied is a fin-tech application that is specialized in finacial forecasting, planning and budget administration. An ideal shopping list is generated to meet the user's needs.<br></br>It was developed with Python, Javascript, MongoDB, Flask. Together with my team we won prizes at the following hackathons: IT Fest, HackTheVirus and Start-up Weekend.  </p>
+                <a href="https://www.devpost.com/software/food-tracker-tnhe94">Check it out!</a>
             </div>
-            <div class="Hobbies">
-            <h2>Hobbies</h2>
-            <p></p>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div class="project" style="background-color:teal">
+                <h2 style="color:aliceblue">RegexToAutomata</h2>
+                <p style="color:aliceblue; font-size:15px;">This is a project made for the Theory of computation and Automata Theory course in University. <br></br>I have used C++ to implement the convertor from a regular expression to a finite automata and Python to generate a photo of the automata.</p>
+                <a href="https://www.github.com/AlexandraBulaceanu/LFA-TEMA2">Check it out!</a>
             </div>
-        <!--</section> -->
+            </div>
+        </section>   
+        <br></br>
+        <section "section-gallery" id="section-gallery">
+            <div id="contentPics">
+                <h1 style="color:aliceblue; font-size:20px; background-color:cadetblue; background-size:fit-content">Gallery of my favourite places</h1>
+            <div class="gallery">
+                <a href="images/istanbul.jpg"><img src="images/istanbul.jpg"/></a>
+                <a href="images/russia.jpg"><img src="images/russia.jpg"/></a>
+                <a href="images/berlin.jpg"><img src="images/berlin.jpg"/></a>
+                <br></br>
+                <a href="images/italy.jpg"><img src="images/italy.jpg"/></a>
+                <a href="images/london.jpg"><img src="images/london.jpg"/></a>
+                <a href="images/santorini.jpg"><img src="images/santorini.jpg"/></a>
+                <br></br>
+                <a href="images/venice.jpg"><img src="images/venice.jpg"/></a>
+                <a href="images/prague.jpg"><img src="images/prague.jpg"/></a>
+                <a href="images/como.jpg"><img src="images/como.jpg"/></a>
+                <br></br>
+                <a href="images/bosfor.jpg"><img src="images/bosfor.jpg"/></a>
+                <a href="images/austria.jpg"><img src="images/austria.jpg"/></a>
+                <a href="images/canada.jpg"><img src="images/canada.jpg"/></a>
+            </div>
+            </div>
+        </section>
+        <br></br>
+        <section class="section-blog" id="section-blog">
+            <h2 style="color:aliceblue; font-size:20px; background-color:cadetblue;">Blog Posts</h2>
+            <div class="posts">
+                <div class="card">
+                <h2 style="color:aliceblue;">Dancing</h2>
+                <h3>aibulaceanu, Jul 17, 2020</h3>
+                <div class="image"><img src="images/dance.jpg"/></div>
+                <p style="color:aliceblue; font-size:20px;">Dance and express yourself</p>
+                <p style="color:aliceblue; font-size:20px;">I have been dancing since I was a child. It brings a lot of happiness to my life. It makes me forget everything. It's just me and the music. I let my moves be guided by the rythm. I have also won a couple of prizes during dance competitions.</p>
+                </div>
+                <div class="card">
+                <h2 style="color:aliceblue;">Eurovision</h2>
+                <h3>aibulaceanu, Jul 16, 2020</h3>
+                <div class="image"><img src="images/eurovision.jpg"/></div>
+                <p style="color:aliceblue; font-size:20px;">What does Eurovision mean to me</p>
+                <p style="color:aliceblue; font-size:20px;">It means bringing cultures and people together, building bridges betweeen everyone, eliminating all the distances between us, unity in diversity. The most important idea that I have learned from this contest is the fact that the most beautiful thing that we have in common is that we are all unique.</p>
+                </div>
+            </div>
+        </section>
+        <br></br>
+        <section class="section-contact" id="section-contact">
+            <h1 class="contact title" style="color:aliceblue; font-size:20px; background-color:teal">Contact Form</h1>
+            <br></br>
+            <form class="contact-form" style="background-color: cadetblue">
+                <label for="Name" style="color:aliceblue">Name</label>
+                <input type="text" id="Name" placeholder="Your name">
+                <label for="email" style="color:aliceblue">Email</label>
+                <br></br>
+                <input type="email" id="mail" placeholder="Your email">
+                <br></br>
+                <label for="origin" style="color:aliceblue">Country</label>
+                <input type="text" id="origin" placeholder="Where are you from?">
+                <label for="subject" style="color:aliceblue">Your message</label>
+                <textarea id="subject" placeholder="Write your message" style="height:200px"></textarea>
+                <input type="submit" value="Submit" class="submit-btn">
+            </form>
+        </section>
+        <br></br>
+        <section class="section-facts" id="section-facts">
+                <h1 style="color:aliceblue; font-size:30px; background-color:cadetblue">Random facts about me</h1>
+                <p>Click here to get a random fact about me:</p>
+                <button onclick="addRandomFact()" style="font-size: 20px">Get a fact</button>
+                 <div id="fact-container"></div>
+            <div>
+        </section>
        
         </div>
-        <p>Click here to get a random message:</p>
-        <button onclick="addRandomGreeting()">Hello</button>
-        <div id="greeting-container"></div>
-      </div>
+        <br></br>
+        <footer class="section-media" style="margin-bottom:5px; background-color:cadetblue; width:100%; height:50px;">
+            <!--<div class="icons-title" style="color:aliceblue; font-size:15px; text-align:centre;">
+            <br></br>-->
+            <div class="icons">
+                <a href="https://www.github.com/AlexandraBulaceanu" class="social-media-link">
+                    <i class="fab fa-github-square fa-5x"></i>
+                </a>
+                <a href="https://www.facebook.com/alexandrairina.bulaceanu" class="social-media-link">
+                    <i class="fab fa-facebook-square fa-5x"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/alexandra-irina-bulaceanu-091787154" class="social-media-link">
+                    <i class="fab fa-linkedin-square fa-5x"></i>
+                </a>
+            </div>
+        </footer>
     </div>
   </body>
 </html>
