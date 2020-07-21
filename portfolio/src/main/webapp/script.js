@@ -30,8 +30,27 @@ function addRandomFact() {
 
 }
 
-function getMessage() {
+/*function getMessage() {
   fetch('/data').then(response => response.text()).then((message) => {
     document.getElementById('message-container').innerText = message;
   });
+}*/
+
+function getComments(){
+  fetch('/data').then(response => response.json()).then((comms) => {
+
+    const commsListElement = document.getElementById('server-comments-container');
+    commsListElement.innerHTML = '';
+    for(var i=0; i<comms.length; i++){
+        commsListElement.appendChild(createListElement("Comment number "+i+" : "+comms[i]+"\n"));
+    }
+  });
 }
+
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+
