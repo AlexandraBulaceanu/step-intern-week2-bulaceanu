@@ -29,3 +29,9 @@ function addRandomFact() {
   factContainer.style.color="aliceblue";
 
 }
+
+function getMessage() {
+  fetch('/data').then(response => response.text()).then((message) => {
+    document.getElementById('message-container').innerText = message;
+  });
+}
