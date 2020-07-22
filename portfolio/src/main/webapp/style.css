@@ -340,3 +340,11 @@ input[type=submit]:hover{
 
 }
 
+.comment{
+    background-color: cadetblue;
+                border: none;
+                color: white;
+                padding: 15px 15px;
+                cursor: pointer;
+                font-size: 30px;
+}

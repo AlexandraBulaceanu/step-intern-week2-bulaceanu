@@ -153,12 +153,21 @@
                  <div id="fact-container"></div>
             <div>
         </section>
-       <div id="message">
-      <h1>Random message</h1>
-      <p>Click here to see a message:</p>
-      <button onclick="getMessage()">Get a message!</button>
-    <div id="message-container" style="background-color:white; font-size:20px;"></div>
+        <!--
+        <div id="message">
+            <h1>Random message</h1>
+            <p>Click here to see a message:</p>
+            <button onclick="getMessage()">Get a message!</button>
+            <div id="message-container" style="background-color:white; font-size:20px;"></div>
         </div>
+        -->
+         <div id="json-message" style="background-color:teal;">
+            <h1 style="background-color:teal; font-size:20px;">Comments section</h1>
+            <p style="background-color:teal;">Click here to see comments:</p>
+            <button id="comment" onclick="getComments()">Fetch server comments!</button>
+            <ul id="server-comments-container" style="margin-top:20px; color:white; font-size:20px;"></ul>
+         </div>
+
         <br>
         <footer class="section-media" style="margin-bottom:5px; background-color:cadetblue; width:100%; height:50px;">
             <!--<div class="icons-title" style="color:aliceblue; font-size:15px; text-align:centre;">
