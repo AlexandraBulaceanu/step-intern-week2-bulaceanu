@@ -28,7 +28,8 @@ import java.util.Arrays;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   
-  String messages[] = new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
+  String messages[] =
+        new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
   private List<String> comments = Arrays.asList(messages);
   
   @Override
