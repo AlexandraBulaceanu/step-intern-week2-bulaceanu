@@ -15,13 +15,13 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.Arrays;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -29,7 +29,7 @@ import java.util.Arrays;
 public class DataServlet extends HttpServlet {
   
   String messages[] =
-        new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
+      new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
   private List<String> comments = Arrays.asList(messages);
   
   @Override
