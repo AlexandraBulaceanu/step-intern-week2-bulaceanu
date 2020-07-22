@@ -25,8 +25,8 @@ function addRandomFact() {
   // Add it to the page.
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = fact;
-  factContainer.style.fontSize="20px";
-  factContainer.style.color="aliceblue";
+  factContainer.style.fontSize = "20px";
+  factContainer.style.color = "aliceblue";
 
 }
 
@@ -41,8 +41,8 @@ function getComments(){
 
     const commsListElement = document.getElementById('server-comments-container');
     commsListElement.innerHTML = '';
-    for(var i=0; i<comms.length; i++){
-        commsListElement.appendChild(createListElement("Comment number "+i+" : "+comms[i]+"\n"));
+    for(var i = 0; i < comms.length; i++){
+        commsListElement.appendChild(createListElement("Comment number " + i + " : " + comms[i] + "\n"));
     }
   });
 }
