@@ -23,18 +23,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  
   String messages[] =
       new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
   private List<String> comments = Arrays.asList(messages);
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
     String json = convertToJson(comments);
 
     response.setContentType("application/json;");
