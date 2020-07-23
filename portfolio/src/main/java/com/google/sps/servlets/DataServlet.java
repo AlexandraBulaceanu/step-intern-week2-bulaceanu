@@ -14,7 +14,14 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
+import com.google.sps.data.Comment;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -24,23 +31,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+@WebServlet("/comments")
 public class DataServlet extends HttpServlet {
-  String messages[] =
+  /*String messages[] =
       new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
-  private List<String> comments = Arrays.asList(messages);
+  private List<String> comments = Arrays.asList(messages);*/
+
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = convertToJson(comments);
+    Query query = new Query("Comment").addSort("data", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    List<Comment> comments = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+      String message = (String) entity.getProperty("message");
+      String name = (String) entity.getProperty("name");
+      ZonedDateTime data = (ZonedDateTime) entity.getProperty("data");
+
+      Comment comm = new Comment(id,message,name,data);
+      comments.add(comm);
+    }
+
+    Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(json);
+    response.getWriter().println(gson.toJson(comments));
+  }
   }
 
-  private String convertToJson(List<String> comments) {
-    Gson gson = new Gson();
-    String json = gson.toJson(comments);
-    return json;
+  @Override
+  public void doPost() HttpServletRequest request, HttpServletResponse response) throws IOException{
+      String message = request.getParameter("comment");
+      String name = request.getParameter("name");
+      Comment comment = new Comment(message,name);
+
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("message", comment.getMessage());
+    commentEntity.setProperty("name", comment.getName());
+    commentEntity.setProperty("date", comment.getDate());
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+
+    response.sendRedirect("/index.html");
+      
   }
 }

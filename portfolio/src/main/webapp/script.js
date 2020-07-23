@@ -15,6 +15,8 @@
 /**
  * Adds a random greeting to the page.
  */
+const noComm = 0;
+
 function addRandomFact() {
   const facts =
       ['I am currently learning to play guitar!', 'My favourite language is turkish', 'I have been practising dancing for 10 years', 'For a couple of time I did not know if I wanted to become a doctor or a programmer', 'My favourite Netflix series is Dark', 'I love reading, but also writing'];
@@ -34,7 +36,7 @@ function addRandomFact() {
   fetch('/data').then(response => response.text()).then((message) => {
     document.getElementById('message-container').innerText = message;
   });
-}*/
+}
 
 function getComments(){
   fetch('/data').then(response => response.json()).then((comms) => {
@@ -45,12 +47,50 @@ function getComments(){
         commsListElement.appendChild(createListElement("Comment number " + i + " : " + comms[i] + "\n"));
     }
   });
-}
+}*/
 
 
 function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
+
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.addEventListener('click', () => {
+    deleteComment(comment);
+
+    // Remove the task from the DOM.
+    liElement.remove();
+  });
+  liElement.appendChild(deleteButtonElement);
   return liElement;
 }
 
+
+function loadComments() {
+  fetch('/comments').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('previous-comments');
+    commsListElement.innerHTML = '';
+    if(noComm > comments.length) noComm = comments.length; 
+    for(var i = 0; i < noComm; i++){
+        commsListElement.appendChild(createListElement('User ' + comments[i].name + 'added this comment: ' + comments[i].message +
+                                  ', posted on: ' + comments[i].date));
+        
+    }
+  });
+}
+
+
+/** Tells the server to delete the comment. */
+
+function deleteComment(comment) {
+  const params = new URLSearchParams();
+  params.append('id', comment.id);
+  fetch('/delete-comments', {method: 'POST', body: params});
+}
+
+
+function noOfComments(selectedValue) {
+  noComm = selectedValue.value;
+  loadComments();
+}

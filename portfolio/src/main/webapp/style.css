@@ -173,6 +173,11 @@ html{
     flex-direction: column;
 }
 
+.comments-form{
+    width: 65rem;
+    flex-direction: column;
+}
+
 input[type=text], select, mail, textarea{
     width: 100%;
     padding: 15px;
