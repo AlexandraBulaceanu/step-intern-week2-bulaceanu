@@ -170,40 +170,27 @@
         -->
     <section class="section-comments" id="section-comments" style="margin-top:15px">
         <h1 class="comm title" style="color:aliceblue; font-size:20px; background-color:teal">Comments</h1>
-          <div id="max-no-of-comments">
-              <h1 style="background-color:teal; font-size:20px;">Select the nb of comments you would like to see:</h1>
-				<select id="no-of-comms" onchange="noOfComments(this);">
-					<option value="3">3</option>
-					<option value="5">5</option>
-					<option value="10">10</option>
-					<option value="20">20</option>
-                    <option value="30">30</option>
-				</select>
-          <div>
-          <div id="prev-comms">
-              <ul id="previous-comments"></ul>
-          </div>
-        <hr/>
+           <br/>
+            <ul id="previous-comments" style="background-color:cadetblue; font-size:20px; color:aliceblue"></ul>
+            <br/>
             <form action="/comments" method="POST" class="comments-form">
-
                 <div id="max-no-of-comments">
-                <h1 style="background-color:teal; font-size:20px;">Select the nb of comments you would like to see:</h1>
+                <h1 style="background-color:cadetblue; font-size:20px; color:aliceblue">Select the nb of comments you would like to see:</h1>
 				<select id="no-of-comms" onchange="noOfComments(this);">
-					<option value="3">3</option>
+				   <option value="3">3</option>
 					<option value="5">5</option>
 					<option value="10">10</option>
 					<option value="20">20</option>
                     <option value="30">30</option>
 				</select>
-                <div>
-            
+                </div>
+            <div style="background-color:cadetblue">
             <label for="Name" style="color:aliceblue; font-size:20px">Name</label>
-            <input type="text" id="name" placeholder="Your name" required>
-
-            <label for="comm" style="color:aliceblue font-size:20px">Your message</label>
-            <textarea id="comment" placeholder="Add your comment" style="height:200px"></textarea
-            
-            <input type="submit" value="Submit your comment" class="submit-btn">
+            <input type="text" name="name-input" placeholder="Your name" required>
+            <label for="comm" style="color:aliceblue; font-size:20px">Your message</label>
+            <textarea name="comment-input" placeholder="Add your comment" style="height:100px"></textarea>       
+            <input type="submit" value="Submit your comment">
+            </div>
             </form>
     </section>
 

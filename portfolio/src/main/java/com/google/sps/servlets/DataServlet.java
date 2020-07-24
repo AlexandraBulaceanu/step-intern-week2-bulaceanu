@@ -24,6 +24,8 @@ import com.google.gson.Gson;
 import com.google.sps.data.Comment;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +42,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Query query = new Query("Comment").addSort("data", SortDirection.DESCENDING);
+    Query query = new Query("Comment").addSort("date", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -50,9 +52,9 @@ public class DataServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String message = (String) entity.getProperty("message");
       String name = (String) entity.getProperty("name");
-      ZonedDateTime data = (ZonedDateTime) entity.getProperty("data");
+      Date date = (Date) entity.getProperty("date");
 
-      Comment comm = new Comment(id,message,name,data);
+      Comment comm = new Comment(id,message,name,date);
       comments.add(comm);
     }
 
@@ -61,18 +63,17 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
   }
-  }
+  
 
   @Override
-  public void doPost() HttpServletRequest request, HttpServletResponse response) throws IOException{
-      String message = request.getParameter("comment");
-      String name = request.getParameter("name");
-      Comment comment = new Comment(message,name);
-
+  public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException{
+    String message = request.getParameter("comment-input");
+    String name = request.getParameter("name-input");
+    
     Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("message", comment.getMessage());
-    commentEntity.setProperty("name", comment.getName());
-    commentEntity.setProperty("date", comment.getDate());
+    commentEntity.setProperty("message", message);
+    commentEntity.setProperty("name", name);
+    commentEntity.setProperty("date", new Date());
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);

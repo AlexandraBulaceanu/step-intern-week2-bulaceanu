@@ -1,21 +1,21 @@
 package com.google.sps.data;
 
-import java.time.ZonedDateTime;
+import java.util.Date;	
 
 public final class Comment{
-    private final long id;
+    private long id;
     private String message;
     private String name;
-    private ZonedDateTime date;
+    private Date date;
 
-    public Comment(long id, String message, String name, ZonedDateTime date){
+    public Comment(long id, String message, String name, Date date){
         this.id = id;
         this.message = message;
         this.name = name;
         this.date = date;
     }
 
-    public Comment(String message, String name, ZonedDateTime date){
+    public Comment(String message, String name, Date date){
         this.message = message;
         this.name = name;
         this.date = date;
@@ -24,7 +24,7 @@ public final class Comment{
 
 
     public Comment(String message, String name){
-        this(message, name, ZonedDateTime.now());
+        this(message, name, new Date());
     }
 
     public String getMessage(){
@@ -33,7 +33,7 @@ public final class Comment{
     public String getName(){
         return this.name;
     }
-    public String getDate(){
+    public Date getDate(){
         return this.date;
     }
     public void setMessage(String message){
@@ -42,7 +42,7 @@ public final class Comment{
     public void setName(String name){
         this.name = name;
     }
-    public void setDate(String date){
+    public void setDate(Date date){
         this.date = date;
     }
 

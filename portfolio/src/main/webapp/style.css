@@ -29,7 +29,6 @@ html{
 
 .section-intro{
     width: 100%;
-    height: 100vh;
     flex-direction: column;
     margin-top: -80px;
 }
@@ -60,18 +59,20 @@ html{
 .job-position{
     font-size: 2.5rem;
     color: aliceblue;
-    background-color: teal;
     background-size: 100px 100px;
     margin: 5rem 0;
     padding: 0.5rem 3rem;
     letter-spacing: 0.3rem;
     transform: skew(-10deg);
-    width: 300px;
     justify-content: center;
     align-content: center;
     align-self: center;
-    display: grid;
-    margin-left: 40vw;
+    display: block;
+}
+
+.job-position h3{
+    background-color: teal;
+    display: inline-block;
 }
 
 .section-intro-btn1{
@@ -99,12 +100,13 @@ html{
     background-color: RoyalBlue;
 }
 
+/*
 .container{
     display: grid;
     grid-template-rows: 10px 1fr;
 
-    /*margin-top: -60px;*/
-}
+    margin-top: -60px;
+*/
 
 /*.sections{
     margin-top: -60px;
@@ -117,6 +119,9 @@ html{
     box-shadow: 0.3rem 0.3rem 0.5rem aliceblue;
     margin-top: 0px;
     z-index: 300;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 
@@ -127,7 +132,9 @@ html{
     margin: 0 3rem;
     letter-spacing: 0.3rem;
     text-transform: uppercase;
-    transition: color 0.3rem;}
+    transition: color 0.3rem;
+    
+}
 
 .navbar-link:hover{
     
@@ -163,18 +170,19 @@ html{
     margin-left: 0px;
 }
 
+
 /*.contact-form{
     background-color: cadetblue;
     background-size: 100px 100px;
     padding: 20px;
 }*/
 .contact-form{
-    width: 65rem;
+    max-width: 65rem;
     flex-direction: column;
 }
 
 .comments-form{
-    width: 65rem;
+    max-width: 65rem;
     flex-direction: column;
 }
 
@@ -240,12 +248,13 @@ input[type=submit]:hover{
 
 .image {
   background-color: cadetblue;
-  width: 100%;
-  height: 100%;
   padding: 20px;
-  object-fit:contain;
 }
 
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+}
 
 .card {
   background-color: teal;
@@ -278,8 +287,9 @@ input[type=submit]:hover{
     .navbar{
         height: 10rem;
         margin-right: 15px;
-        object-fit: contain;
+        flex-direction: column;
     }
+
     
    /* .section-intro-btn1{
         height: 50%;

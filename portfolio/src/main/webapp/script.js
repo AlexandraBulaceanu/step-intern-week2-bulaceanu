@@ -15,7 +15,7 @@
 /**
  * Adds a random greeting to the page.
  */
-const noComm = 0;
+var noComm = 3;
 
 function addRandomFact() {
   const facts =
@@ -50,34 +50,49 @@ function getComments(){
 }*/
 
 
-function createListElement(text) {
+function createListElement(comment) {
+  console.log("in createListElement");
   const liElement = document.createElement('li');
+  var text = "User "+comment.name+"   added this comment: "+comment.message+" , posted on "+comment.date;
   liElement.innerText = text;
 
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
   deleteButtonElement.addEventListener('click', () => {
     deleteComment(comment);
-
-    // Remove the task from the DOM.
     liElement.remove();
+    //location.reload();
   });
   liElement.appendChild(deleteButtonElement);
   return liElement;
 }
 
+function noOfComments(selectedValue) {
+  console.log("nuca");
+  console.log(selectedValue);
+  noComm = selectedValue.value;
+  console.log(noComm);
+  loadComments();
+}
 
 function loadComments() {
+    console.log("loadComments");
   fetch('/comments').then(response => response.json()).then((comments) => {
+    console.log(comments);
     const commentListElement = document.getElementById('previous-comments');
-    commsListElement.innerHTML = '';
+    commentListElement.innerHTML = '';
     if(noComm > comments.length) noComm = comments.length; 
+    console.log(noComm);
+    console.log(comments);
+    console.log(comments[0].name);
+    console.log(comments[0]);
     for(var i = 0; i < noComm; i++){
-        commsListElement.appendChild(createListElement('User ' + comments[i].name + 'added this comment: ' + comments[i].message +
-                                  ', posted on: ' + comments[i].date));
+        commentListElement.appendChild(createListElement(comments[i]));
         
     }
   });
+  
+  console.log("loadComments");
 }
 
 
@@ -90,7 +105,3 @@ function deleteComment(comment) {
 }
 
 
-function noOfComments(selectedValue) {
-  noComm = selectedValue.value;
-  loadComments();
-}
