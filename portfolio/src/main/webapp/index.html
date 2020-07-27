@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body>
+  <body onload="loadComments()">
     <div class="container">
       <!--Navbar-->
       <nav class="navbar center">
@@ -160,13 +160,39 @@
             <button onclick="getMessage()">Get a message!</button>
             <div id="message-container" style="background-color:white; font-size:20px;"></div>
         </div>
-        -->
+        
          <div id="json-message" style="background-color:teal;">
             <h1 style="background-color:teal; font-size:20px;">Comments section</h1>
             <p style="background-color:teal;">Click here to see comments:</p>
             <button id="comment" onclick="getComments()">Fetch server comments!</button>
             <ul id="server-comments-container" style="margin-top:20px; color:white; font-size:20px;"></ul>
          </div>
+        -->
+    <section class="section-comments" id="section-comments" style="margin-top:15px">
+        <h1 class="comm title" style="color:aliceblue; font-size:20px; background-color:teal">Comments</h1>
+           <br/>
+            <ul id="previous-comments" style="background-color:cadetblue; font-size:20px; color:aliceblue"></ul>
+            <br/>
+            <form action="/comments" method="POST" class="comments-form">
+                <div id="max-no-of-comments">
+                <h1 style="background-color:cadetblue; font-size:20px; color:aliceblue">Select the nb of comments you would like to see:</h1>
+				<select id="no-of-comms" onchange="noOfComments(this);">
+				   <option value="3">3</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="20">20</option>
+                    <option value="30">30</option>
+				</select>
+                </div>
+            <div style="background-color:cadetblue">
+            <label for="Name" style="color:aliceblue; font-size:20px">Name</label>
+            <input type="text" name="name-input" placeholder="Your name" required>
+            <label for="comm" style="color:aliceblue; font-size:20px">Your message</label>
+            <textarea name="comment-input" placeholder="Add your comment" style="height:100px"></textarea>       
+            <input type="submit" value="Submit your comment">
+            </div>
+            </form>
+    </section>
 
         <br>
         <footer class="section-media" style="margin-bottom:5px; background-color:cadetblue; width:100%; height:50px;">
