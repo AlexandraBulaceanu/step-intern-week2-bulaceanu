@@ -17,11 +17,14 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
+import com.google.sps.data.User;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -42,6 +45,15 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+    response.setContentType("text/html;");
+    
+  /*  UserService userService = UserServiceFactory.getUserService();
+    if (!userService.isUserLoggedIn()) {
+      //response.sendRedirect("/comments");
+      return;
+    } */
+   
     Query query = new Query("Comment").addSort("date", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -60,15 +72,24 @@ public class DataServlet extends HttpServlet {
 
     Gson gson = new Gson();
 
-    response.setContentType("application/json;");
+    response.setContentType("application/json");
     response.getWriter().println(gson.toJson(comments));
   }
   
 
   @Override
   public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException{
+    
+   UserService userService = UserServiceFactory.getUserService();
+   /*
+    if (!userService.isUserLoggedIn()) {
+      //response.sendRedirect("/comments");
+      return;
+    }*/
+    
     String message = request.getParameter("comment-input");
     String name = request.getParameter("name-input");
+    String email = userService.getCurrentUser().getEmail();
     
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", message);
@@ -81,4 +102,6 @@ public class DataServlet extends HttpServlet {
     response.sendRedirect("/index.html");
       
   }
+
+
 }

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -9,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body onload="loadComments()">
+  <body onload="authentication(); loadComments();">
     <div class="container">
       <!--Navbar-->
       <nav class="navbar center">
@@ -170,6 +169,12 @@
         -->
     <section class="section-comments" id="section-comments" style="margin-top:15px">
         <h1 class="comm title" style="color:aliceblue; font-size:20px; background-color:teal">Comments</h1>
+        <br/>
+        <div id="login">
+            <h1 style="background-color:cadetblue; font-size:20px; color:aliceblue">In order to leave a comment or to read other users' comments, you need to sign in:</h1>
+            <p id="login-message" style="background-color:cadetblue; font-size:25px; color:aliceblue"></p>
+        </div>
+        <div id = "comm-section">
            <br/>
             <ul id="previous-comments" style="background-color:cadetblue; font-size:20px; color:aliceblue"></ul>
             <br/>
@@ -185,13 +190,16 @@
 				</select>
                 </div>
             <div style="background-color:cadetblue">
-            <label for="Name" style="color:aliceblue; font-size:20px">Name</label>
-            <input type="text" name="name-input" placeholder="Your name" required>
+            <label for="Name" style="color:aliceblue; font-size:20px">Nickname</label>
+            <input type="text" name="name-input" placeholder="Your nickname" required>
             <label for="comm" style="color:aliceblue; font-size:20px">Your message</label>
             <textarea name="comment-input" placeholder="Add your comment" style="height:100px"></textarea>       
             <input type="submit" value="Submit your comment">
+            <br/>
+            <p id="logout" style="background-color:cadetblue; font-size:25px; color:aliceblue"></p>
             </div>
             </form>
+            </div>
     </section>
 
         <br>

@@ -53,7 +53,7 @@ function getComments(){
 function createListElement(comment) {
   console.log("in createListElement");
   const liElement = document.createElement('li');
-  var text = "User "+comment.name+"   added this comment: "+comment.message+" , posted on "+comment.date;
+  var text = comment.name+"   added this comment: "+comment.message+" , posted on "+comment.date;
   liElement.innerText = text;
 
   const deleteButtonElement = document.createElement('button');
@@ -76,23 +76,17 @@ function noOfComments(selectedValue) {
 }
 
 function loadComments() {
-    console.log("loadComments");
+
   fetch('/comments').then(response => response.json()).then((comments) => {
-    console.log(comments);
     const commentListElement = document.getElementById('previous-comments');
     commentListElement.innerHTML = '';
-    if(noComm > comments.length) noComm = comments.length; 
-    console.log(noComm);
-    console.log(comments);
-    console.log(comments[0].name);
-    console.log(comments[0]);
+    if(noComm > comments.length) noComm = comments.length;
+     
     for(var i = 0; i < noComm; i++){
         commentListElement.appendChild(createListElement(comments[i]));
         
     }
   });
-  
-  console.log("loadComments");
 }
 
 
@@ -104,4 +98,23 @@ function deleteComment(comment) {
   fetch('/delete-comments', {method: 'POST', body: params});
 }
 
-
+function authentication(){
+    fetch('/login').then(response => response.json()).then((user) => {
+    const commentSection = document.getElementById('comm-section');
+    const loginSection = document.getElementById('login');
+    const loginMessage = document.getElementById('login-message');
+    const logoutSection = document.getElementById('logout');
+    console.log(user);
+    if (user.loggedIn) {
+        commentSection.style.display= 'block';
+        loginSection.style.display= 'none';
+        logoutSection.innerHTML = '<br><a href="' + user.url + '">Logout</a>';
+        console.log("loggged");
+    } else {
+        commentSection.style.display= 'none';
+        loginSection.style.display= 'block';
+        loginMessage.innerHTML += '<a href="' + user.url + '">Login</a>';
+        console.log("not yet");
+    }
+    });
+}
