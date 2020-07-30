@@ -32,23 +32,6 @@ function addRandomFact() {
 
 }
 
-/*function getMessage() {
-  fetch('/data').then(response => response.text()).then((message) => {
-    document.getElementById('message-container').innerText = message;
-  });
-}
-
-function getComments(){
-  fetch('/data').then(response => response.json()).then((comms) => {
-
-    const commsListElement = document.getElementById('server-comments-container');
-    commsListElement.innerHTML = '';
-    for(var i = 0; i < comms.length; i++){
-        commsListElement.appendChild(createListElement("Comment number " + i + " : " + comms[i] + "\n"));
-    }
-  });
-}*/
-
 
 function createListElement(comment) {
   console.log("in createListElement");
@@ -61,11 +44,13 @@ function createListElement(comment) {
   deleteButtonElement.addEventListener('click', () => {
     deleteComment(comment);
     liElement.remove();
-    //location.reload();
+    
   });
   liElement.appendChild(deleteButtonElement);
   return liElement;
 }
+
+/**limit the numbers of comments */
 
 function noOfComments(selectedValue) {
   console.log("nuca");
@@ -74,6 +59,8 @@ function noOfComments(selectedValue) {
   console.log(noComm);
   loadComments();
 }
+
+/**load the comments */
 
 function loadComments() {
 
@@ -84,8 +71,9 @@ function loadComments() {
      
     for(var i = 0; i < noComm; i++){
         commentListElement.appendChild(createListElement(comments[i]));
-        
     }
+    var element = document.querySelector("#section-comments");
+        element.scrollIntoView();
   });
 }
 
@@ -96,6 +84,7 @@ function deleteComment(comment) {
   const params = new URLSearchParams();
   params.append('id', comment.id);
   fetch('/delete-comments', {method: 'POST', body: params});
+  loadComments();
 }
 
 function authentication(){
@@ -118,3 +107,125 @@ function authentication(){
     }
     });
 }
+
+
+var map;
+var editMarker;
+
+/** Creates a map that allows users to add markers. */
+function initMap() {
+  
+  const homeBucharestCoords = {
+    lat: 44.438138,
+    lng: 26.009505,
+  };
+  const universityOfBucharestCoords = {
+    lat: 44.435556,
+    lng: 26.099669,
+  };
+  const academyOfEconomicStudiesCoords = {
+    lat: 44.447545,
+    lng: 26.096667,
+  };
+
+  map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: homeBucharestCoords, zoom: 16});
+
+ 
+ const homeBucharestMarker = new google.maps.Marker({
+    position: homeBucharestCoords, 
+    map: map
+  });
+  const university1Marker = new google.maps.Marker({
+    position: universityOfBucharestCoords, 
+    map: map
+  });
+  const university2Marker = new google.maps.Marker({
+    position: academyOfEconomicStudiesCoords, 
+    map: map
+  });
+
+  map.addListener('click', (event) => {
+    createMarkerForEdit(event.latLng.lat(), event.latLng.lng());
+  });
+
+  fetchMarkers();
+}
+
+/** Fetches markers and adds them to the map. */
+function fetchMarkers() {
+  fetch('/markers').then(response => response.json()).then((markers) => {
+    markers.forEach(
+        (marker) => {
+            createMarkerForDisplay(marker.lat, marker.lng, marker.content)});
+  });
+}
+ 
+/** Creates a marker that shows a info window */
+function createMarkerForDisplay(lat, lng, content) {
+  const marker =
+      new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+ 
+  const infoWindow = new google.maps.InfoWindow({content: content});
+  marker.addListener('click', () => {
+    infoWindow.open(map, marker);
+  });
+}
+ 
+/** Sends a marker to the backend for saving. */
+function postMarker(lat, lng, content) {
+  const params = new URLSearchParams();
+  params.append('lat', lat);
+  params.append('lng', lng);
+  params.append('content', content);
+ 
+  fetch('/markers', {method: 'POST', body: params});
+}
+ 
+/** Creates a marker that shows a textbox the user can edit. */
+function createMarkerForEdit(lat, lng) {
+  // If we're already showing an editable marker, then remove it.
+  if (editMarker) {
+    editMarker.setMap(null);
+  }
+ 
+  editMarker =
+      new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+ 
+  const infoWindow =
+      new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
+ 
+  // If the user closes the info window, I remove the marker.
+  google.maps.event.addListener(infoWindow, 'closeclick', () => {
+    editMarker.setMap(null);
+  });
+ 
+  infoWindow.open(map, editMarker);
+}
+ 
+/**
+ * Builds and returns HTML elements that show an editable textbox and a submit
+ * button.
+ */
+function buildInfoWindowInput(lat, lng) {
+  const textBox = document.createElement('textarea');
+  const button = document.createElement('button');
+  button.appendChild(document.createTextNode('Submit'));
+ 
+  button.onclick = () => {
+    postMarker(lat, lng, textBox.value);
+    createMarkerForDisplay(lat, lng, textBox.value);
+    editMarker.setMap(null);
+  };
+ 
+  const containerDiv = document.createElement('div');
+  containerDiv.appendChild(textBox);
+  containerDiv.appendChild(document.createElement('br'));
+  containerDiv.appendChild(button);
+ 
+  return containerDiv;
+}
+
+
+ 
