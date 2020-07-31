@@ -7,12 +7,14 @@ public final class Comment{
     private String message;
     private String name;
     private Date date;
+    private float score;
 
-    public Comment(long id, String message, String name, Date date){
+    public Comment(long id, String message, String name, Date date, float score){
         this.id = id;
         this.message = message;
         this.name = name;
         this.date = date;
+        this.score = score;
     }
 
     public Comment(String message, String name, Date date){
@@ -20,8 +22,6 @@ public final class Comment{
         this.name = name;
         this.date = date;
     }
-
-
 
     public Comment(String message, String name){
         this(message, name, new Date());
@@ -36,14 +36,8 @@ public final class Comment{
     public Date getDate(){
         return this.date;
     }
-    public void setMessage(String message){
-        this.message = message;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setDate(Date date){
-        this.date = date;
+    public float getScore(){
+        return this.score;
     }
 
 }

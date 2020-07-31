@@ -15,7 +15,9 @@
 /**
  * Adds a random greeting to the page.
  */
-var noComm = 3;
+
+//var mykey = config.MY_KEY;
+//var secretkey = config.SECRET_KEY;
 
 function addRandomFact() {
   const facts =
@@ -36,8 +38,9 @@ function addRandomFact() {
 function createListElement(comment) {
   console.log("in createListElement");
   const liElement = document.createElement('li');
-  var text = comment.name+"   added this comment: "+comment.message+" , posted on "+comment.date;
+  var text = comment.name+"   added this comment: "+comment.message+" , posted on "+comment.date+" with score of: "+comment.score;
   liElement.innerText = text;
+  liElement.style.backgroundColor = comment.score > 0 ? "green" : "red";
 
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
@@ -52,17 +55,16 @@ function createListElement(comment) {
 
 /**limit the numbers of comments */
 
-function noOfComments(selectedValue) {
-  console.log("nuca");
-  console.log(selectedValue);
+function noOfComments(selectedValue){
+  
   noComm = selectedValue.value;
-  console.log(noComm);
-  loadComments();
+  loadComments(noComm);
 }
 
 /**load the comments */
 
-function loadComments() {
+
+function loadComments(noComm = "3") {
 
   fetch('/comments').then(response => response.json()).then((comments) => {
     const commentListElement = document.getElementById('previous-comments');
@@ -72,11 +74,9 @@ function loadComments() {
     for(var i = 0; i < noComm; i++){
         commentListElement.appendChild(createListElement(comments[i]));
     }
-    var element = document.querySelector("#section-comments");
-        element.scrollIntoView();
+
   });
 }
-
 
 /** Tells the server to delete the comment. */
 
@@ -98,19 +98,20 @@ function authentication(){
         commentSection.style.display= 'block';
         loginSection.style.display= 'none';
         logoutSection.innerHTML = '<br><a href="' + user.url + '">Logout</a>';
-        console.log("loggged");
+        
     } else {
         commentSection.style.display= 'none';
         loginSection.style.display= 'block';
         loginMessage.innerHTML += '<a href="' + user.url + '">Login</a>';
-        console.log("not yet");
+        
     }
     });
 }
 
+var mapObj = {
 
-var map;
-var editMarker;
+}
+
 
 /** Creates a map that allows users to add markers. */
 function initMap() {
@@ -128,25 +129,25 @@ function initMap() {
     lng: 26.096667,
   };
 
-  map = new google.maps.Map(
+  mapObj["map"] = new google.maps.Map(
       document.getElementById('map'),
       {center: homeBucharestCoords, zoom: 16});
 
  
  const homeBucharestMarker = new google.maps.Marker({
     position: homeBucharestCoords, 
-    map: map
+    map: mapObj["map"]
   });
   const university1Marker = new google.maps.Marker({
     position: universityOfBucharestCoords, 
-    map: map
+    map: mapObj["map"]
   });
   const university2Marker = new google.maps.Marker({
     position: academyOfEconomicStudiesCoords, 
-    map: map
+    map: mapObj["map"]
   });
 
-  map.addListener('click', (event) => {
+  mapObj["map"].addListener('click', (event) => {
     createMarkerForEdit(event.latLng.lat(), event.latLng.lng());
   });
 
@@ -165,11 +166,11 @@ function fetchMarkers() {
 /** Creates a marker that shows a info window */
 function createMarkerForDisplay(lat, lng, content) {
   const marker =
-      new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+      new google.maps.Marker({position: {lat: lat, lng: lng}, map: mapObj["map"]});
  
   const infoWindow = new google.maps.InfoWindow({content: content});
   marker.addListener('click', () => {
-    infoWindow.open(map, marker);
+    infoWindow.open(mapObj["map"], marker);
   });
 }
  
@@ -186,22 +187,22 @@ function postMarker(lat, lng, content) {
 /** Creates a marker that shows a textbox the user can edit. */
 function createMarkerForEdit(lat, lng) {
   // If we're already showing an editable marker, then remove it.
-  if (editMarker) {
-    editMarker.setMap(null);
+  if (mapObj["currentMarker"]) {
+    mapObj["currentMarker"].setMap(null);
   }
  
-  editMarker =
-      new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+  mapObj["currentMarker"] =
+      new google.maps.Marker({position: {lat: lat, lng: lng}, map: mapObj["map"]});
  
   const infoWindow =
       new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
  
   // If the user closes the info window, I remove the marker.
   google.maps.event.addListener(infoWindow, 'closeclick', () => {
-    editMarker.setMap(null);
+    mapObj["currentMarker"].setMap(null);
   });
  
-  infoWindow.open(map, editMarker);
+  infoWindow.open(mapObj["map"], mapObj["currentMarker"]);
 }
  
 /**
@@ -216,7 +217,7 @@ function buildInfoWindowInput(lat, lng) {
   button.onclick = () => {
     postMarker(lat, lng, textBox.value);
     createMarkerForDisplay(lat, lng, textBox.value);
-    editMarker.setMap(null);
+    mapObj["currentMarker"].setMap(null);
   };
  
   const containerDiv = document.createElement('div');
