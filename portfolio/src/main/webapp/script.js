@@ -16,8 +16,14 @@
  * Adds a random greeting to the page.
  */
 
-//var mykey = config.MY_KEY;
-//var secretkey = config.SECRET_KEY;
+var mykey = config.MY_KEY;
+var secretkey = config.SECRET_KEY;
+
+var my_awesome_script = document.createElement('script');
+
+my_awesome_script.setAttribute('src','https://maps.googleapis.com/maps/api/js?key='+config.SECRET_KEY);
+
+document.head.appendChild(my_awesome_script);
 
 function addRandomFact() {
   const facts =

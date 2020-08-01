@@ -7,9 +7,9 @@ public final class Comment{
     private String message;
     private String name;
     private Date date;
-    private float score;
+    private double score;
 
-    public Comment(long id, String message, String name, Date date, float score){
+    public Comment(long id, String message, String name, Date date, double score){
         this.id = id;
         this.message = message;
         this.name = name;
@@ -36,7 +36,7 @@ public final class Comment{
     public Date getDate(){
         return this.date;
     }
-    public float getScore(){
+    public double getScore(){
         return this.score;
     }
 

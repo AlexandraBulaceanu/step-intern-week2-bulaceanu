@@ -1,2 +1,5 @@
 target/
 .idea
+portfolio/node_modules
+portfolio/src/main/webapp/config.js
+

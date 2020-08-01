@@ -58,7 +58,11 @@ public class DataServlet extends HttpServlet {
       String message = (String) entity.getProperty("message");
       String name = (String) entity.getProperty("name");
       Date date = (Date) entity.getProperty("date");
-      float score = (float) entity.getProperty("score");
+      double score;
+      if(entity.hasProperty("score"))
+        score = (double) entity.getProperty("score");
+      else 
+        score = 0;
       
       //score = (float) score;
       Comment comm = new Comment(id,message,name,date,score);
