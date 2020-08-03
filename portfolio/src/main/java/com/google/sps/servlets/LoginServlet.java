@@ -1,5 +1,5 @@
 package com.google.sps.servlets;
-
+ 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
@@ -9,10 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+ 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-
+ 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html");
@@ -20,10 +20,9 @@ public class LoginServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     User user;
     if (userService.isUserLoggedIn()) {
-
-      String email = userService.getCurrentUser().getEmail();
+ 
       String logoutUrl = userService.createLogoutURL("/");
-      user = new User(email,true,logoutUrl);
+      user = new User(true,logoutUrl);
     }
     else{
         String loginUrl = userService.createLoginURL("/");
@@ -33,5 +32,5 @@ public class LoginServlet extends HttpServlet {
     response.setContentType("application/json");
     response.getWriter().println(gson.toJson(user));
   }
-
+ 
 }

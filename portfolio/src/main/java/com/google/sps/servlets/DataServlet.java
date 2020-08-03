@@ -11,9 +11,9 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+ 
 package com.google.sps.servlets;
-
+ 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -22,6 +22,9 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
 import com.google.sps.data.User;
@@ -34,74 +37,71 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+ 
+/** Servlet for comments*/
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
-  /*String messages[] =
-      new String[] {"This is amazing!", "Thank you for your time!", "Nice to meet you!"};
-  private List<String> comments = Arrays.asList(messages);*/
-
-
+ 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
     response.setContentType("text/html;");
-    
-  /*  UserService userService = UserServiceFactory.getUserService();
-    if (!userService.isUserLoggedIn()) {
-      //response.sendRedirect("/comments");
-      return;
-    } */
    
     Query query = new Query("Comment").addSort("date", SortDirection.DESCENDING);
-
+ 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
-
+ 
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       long id = entity.getKey().getId();
       String message = (String) entity.getProperty("message");
       String name = (String) entity.getProperty("name");
       Date date = (Date) entity.getProperty("date");
-
-      Comment comm = new Comment(id,message,name,date);
+      double score;
+      if(entity.hasProperty("score"))
+        score = (double) entity.getProperty("score");
+      else 
+        score = 0;
+      
+      //score = (float) score;
+      Comment comm = new Comment(id,message,name,date,score);
       comments.add(comm);
     }
-
+ 
     Gson gson = new Gson();
-
+ 
     response.setContentType("application/json");
     response.getWriter().println(gson.toJson(comments));
   }
   
-
+ 
   @Override
   public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException{
-    
-   UserService userService = UserServiceFactory.getUserService();
-   /*
-    if (!userService.isUserLoggedIn()) {
-      //response.sendRedirect("/comments");
-      return;
-    }*/
-    
+ 
+   
     String message = request.getParameter("comment-input");
     String name = request.getParameter("name-input");
-    String email = userService.getCurrentUser().getEmail();
     
+    Document doc =
+        Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
+ 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", message);
     commentEntity.setProperty("name", name);
     commentEntity.setProperty("date", new Date());
-
+    commentEntity.setProperty("score", score);
+    
+ 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
-
-    response.sendRedirect("/index.html");
-      
+ 
+    response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section-comments");
+     
   }
-
-
+ 
 }
