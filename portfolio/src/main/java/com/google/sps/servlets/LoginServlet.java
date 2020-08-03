@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     User user;
     if (userService.isUserLoggedIn()) {
- 
+
       String logoutUrl = userService.createLogoutURL("/");
       user = new User(true,logoutUrl);
     }

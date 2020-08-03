@@ -37,11 +37,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
 /** Servlet for comments*/
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
- 
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
@@ -78,7 +78,7 @@ public class DataServlet extends HttpServlet {
  
   @Override
   public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException{
- 
+
    
     String message = request.getParameter("comment-input");
     String name = request.getParameter("name-input");
@@ -89,19 +89,18 @@ public class DataServlet extends HttpServlet {
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
     float score = sentiment.getScore();
     languageService.close();
- 
+
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", message);
     commentEntity.setProperty("name", name);
     commentEntity.setProperty("date", new Date());
     commentEntity.setProperty("score", score);
-    
- 
+
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
- 
+
     response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section-comments");
      
   }
- 
+
 }

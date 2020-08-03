@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandraBulaceanu/step-intern-week2-bulaceanu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexandraBulaceanu/step-intern-week2-bulaceanu/issues"
+  },
+  "homepage": "https://github.com/AlexandraBulaceanu/step-intern-week2-bulaceanu#readme",
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

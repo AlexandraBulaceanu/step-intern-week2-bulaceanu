@@ -8,7 +8,7 @@ public final class Comment{
     private String name;
     private Date date;
     private double score;
- 
+
     public Comment(long id, String message, String name, Date date, double score){
         this.id = id;
         this.message = message;
@@ -22,7 +22,7 @@ public final class Comment{
         this.name = name;
         this.date = date;
     }
- 
+
     public Comment(String message, String name){
         this(message, name, new Date());
     }

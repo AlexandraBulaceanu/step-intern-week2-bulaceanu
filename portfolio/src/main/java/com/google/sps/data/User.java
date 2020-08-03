@@ -1,7 +1,7 @@
 package com.google.sps.data;
  
 public final class User{
- 
+
     private boolean loggedIn;
     private String url;
  
@@ -9,7 +9,7 @@ public final class User{
         this.loggedIn = loggedIn;
         this.url = url;
     }
- 
+
     public boolean getLoggedIn(){
         return this.loggedIn;
     }
