@@ -18,6 +18,9 @@
   "homepage": "https://github.com/AlexandraBulaceanu/step-intern-week2-bulaceanu#readme",
   "devDependencies": {
     "eslint": "^7.5.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "htmllint": "^0.8.0"
   }
 }
