@@ -3,4 +3,4 @@ target/
 node_modules
 portfolio/node_modules
 portfolio/src/main/webapp/config.js
-portfolio/target
+
