@@ -20,16 +20,12 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.cloud.language.v1.Sentiment;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
-import com.google.sps.data.User;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,7 +55,7 @@ public class DataServlet extends HttpServlet {
       String name = (String) entity.getProperty("name");
       Date date = (Date) entity.getProperty("date");
       double score;
-      if(entity.hasProperty("score")) score = (double) entity.getProperty("score");
+      if (entity.hasProperty("score")) score = (double) entity.getProperty("score");
       else score = 0;
 
       Comment comm = new Comment(id, message, name, date, score);
@@ -77,7 +73,7 @@ public class DataServlet extends HttpServlet {
 
     String message = request.getParameter("comment-input");
     String name = request.getParameter("name-input");
-   
+ 
     Document doc =
         Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
@@ -95,6 +91,6 @@ public class DataServlet extends HttpServlet {
     datastore.put(commentEntity);
 
     response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section-comments");
-     
+   
   }
 }
