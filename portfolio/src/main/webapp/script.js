@@ -248,7 +248,7 @@ function createMarkerForEdit(lat, lng) {
 /** Builds and returns HTML elements that
   show an editable textbox and a submit button.
   @param {double} lat latitute
-  @param {double} lng longitute 
+  @param {double} lng longitute
   @return {const}  */
 function buildInfoWindowInput(lat, lng) {
   const textBox = document.createElement('textarea');
