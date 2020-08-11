@@ -23,17 +23,22 @@ myAwesomeScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key
 
 document.head.appendChild(myAwesomeScript);
 
+/** Loads the font awsome icons */
 function loadFontAwsome() {
-  setTimeout(function () {
-    let link = document.createElement('link');
+  setTimeout(function() {
+    const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap';
     document.head.appendChild(link);
-    document.getElementsByClassName('section_intro_btn2')[0].innerHTML = '<span class="fa fa-download"></span> Download CV';
-    document.getElementsByClassName('media_link')[0].innerHTML = '<span class="fab fa-github-square fa-5x"></span>';
-    document.getElementsByClassName('media_link')[1].innerHTML = '<span class="fab fa-facebook-square fa-5x"></span>';
-    document.getElementsByClassName('media_link')[2].innerHTML = '<span class="fab fa-linkedin-square fa-5x"></span>';
-   }, 300);
+    document.getElementsByClassName('section_intro_btn2')[0].innerHTML = 
+    '<span class="fa fa-download"></span> Download CV';
+    document.getElementsByClassName('media_link')[0].innerHTML =
+    '<span class="fab fa-github-square fa-5x"></span>';
+    document.getElementsByClassName('media_link')[1].innerHTML =
+    '<span class="fab fa-facebook-square fa-5x"></span>';
+    document.getElementsByClassName('media_link')[2].innerHTML =
+    '<span class="fab fa-linkedin-square fa-5x"></span>';
+  }, 300);
 }
 
 loadFontAwsome();
@@ -66,8 +71,8 @@ function addRandomFact() {
 function createListElement(comment) {
   console.log('in createListElement');
   const liElement = document.createElement('li');
-  const text = comment.name + '   added this comment: ' + comment.message + ' , posted on ' 
-    + comment.date + ' with score of: ' + comment.score;
+  const text = comment.name + '   added this comment: ' + comment.message + ' , posted on ' +
+    comment.date + ' with score of: ' + comment.score;
   liElement.innerText = text;
   liElement.style.backgroundColor = comment.score > 0 ? 'green' : 'red';
 
@@ -99,15 +104,14 @@ function loadComments(noComm = '3') {
       const commentListElement = document.getElementById('previous_comments');
       commentListElement.innerHTML = '';
       if (noComm > comments.length) noComm = comments.length;
-      for (var i = 0; i < noComm; i++) {
+      for (let i = 0; i < noComm; i++) {
         commentListElement.appendChild(createListElement(comments[i]));
       }
     });
 }
 
 /** Tells the server to delete the comment. 
-  @param {object} comment to be deleted by id
-*/
+  @param {object} comment to be deleted by id */
 function deleteComment(comment) {
   const params = new URLSearchParams();
   params.append('id', comment.id);
@@ -191,8 +195,7 @@ function fetchMarkers() {
 /** Creates a marker that shows a info window
   @param {double} lat latitute
   @param {double} lng longitute
-  @param {String} content description
-*/
+  @param {String} content description */
 function createMarkerForDisplay(lat, lng, content) {
   const marker = 
     new google.maps.Marker({position: {lat: lat, lng: lng}, map: mapObj['map']});
@@ -206,8 +209,7 @@ function createMarkerForDisplay(lat, lng, content) {
 /** Sends a marker to the backend for saving.
   @param {double} lat latitute
   @param {double} lng longitute
-  @param {String} content description
- */
+  @param {String} content description */
 function postMarker(lat, lng, content) {
   const params = new URLSearchParams();
   params.append('lat', lat);
@@ -219,8 +221,7 @@ function postMarker(lat, lng, content) {
 
 /** Creates a marker that shows a textbox the user can edit.
   @param {double} lat latitute
-  @param {double} lng longitute
-*/
+  @param {double} lng longitute */
 function createMarkerForEdit(lat, lng) {
   // If we're already showing an editable marker, then remove it.
   if (mapObj['currentMarker']) {
@@ -240,12 +241,9 @@ function createMarkerForEdit(lat, lng) {
   infoWindow.open(mapObj['map'], mapObj['currentMarker']);
 }
 
-/**
- * Builds and returns HTML elements that show an editable textbox and a submit
- * button.
+/** Builds and returns HTML elements that show an editable textbox and a submit button.
   @param {double} lat latitute
-  @param {double} lng longitute
- */
+  @param {double} lng longitute */
 function buildInfoWindowInput(lat, lng) {
   const textBox = document.createElement('textarea');
   const button = document.createElement('button');

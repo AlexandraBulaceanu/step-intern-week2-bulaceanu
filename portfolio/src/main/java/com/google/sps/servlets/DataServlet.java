@@ -90,6 +90,6 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
-    response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section-comments"); 
+    response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section_comments"); 
   }
 }

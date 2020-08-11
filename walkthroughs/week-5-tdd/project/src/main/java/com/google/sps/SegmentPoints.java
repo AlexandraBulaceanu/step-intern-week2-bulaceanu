@@ -1,7 +1,6 @@
 package com.google.sps;
 
 public final class SegmentPoints implements Comparable<SegmentPoints> {
-
   private int noParticipants; 
   private boolean makesBusy; // tells us if the point makes the participants busy or not 
   private int time; 
@@ -27,7 +26,7 @@ public final class SegmentPoints implements Comparable<SegmentPoints> {
   @Override
   public int compareTo(SegmentPoints secondPoint) {
     int res1 = this.time - secondPoint.time;
-	//if they are equal, the first point is the one that frees employees
+	// if they are equal, the first point is the one that frees employees
 	if (res1 == 0) {
 	  if (this.makesBusy) return 1;
 		return -1;
