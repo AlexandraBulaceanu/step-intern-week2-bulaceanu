@@ -1,9 +1,9 @@
 package com.google.sps;
 
 public final class SegmentPoints implements Comparable<SegmentPoints> {
-  private int noParticipants; 
-  private boolean makesBusy; // tells us if the point makes the participants busy or not 
-  private int time; 
+  private int noParticipants;
+  private boolean makesBusy; // tells us if the point makes the participants busy or not
+  private int time;
 
   public SegmentPoints(int noParticipants, boolean makesBusy, int time) {
     this.noParticipants = noParticipants;
@@ -12,7 +12,7 @@ public final class SegmentPoints implements Comparable<SegmentPoints> {
   }
 
   public int getNoParticipants() {
-	return this.noParticipants;
+    return this.noParticipants;
   }
 
   public boolean getMakesBusy() {

@@ -30,7 +30,7 @@ function loadFontAwsome() {
     link.rel = 'stylesheet';
     link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap';
     document.head.appendChild(link);
-    document.getElementsByClassName('section_intro_btn2')[0].innerHTML = 
+    document.getElementsByClassName('section_intro_btn2')[0].innerHTML =
     '<span class="fa fa-download"></span> Download CV';
     document.getElementsByClassName('media_link')[0].innerHTML =
     '<span class="fab fa-github-square fa-5x"></span>';
@@ -71,8 +71,8 @@ function addRandomFact() {
 function createListElement(comment) {
   console.log('in createListElement');
   const liElement = document.createElement('li');
-  const text = comment.name + '   added this comment: ' + comment.message + ' , posted on ' +
-    comment.date + ' with score of: ' + comment.score;
+  const text = comment.name + '   added this comment: ' + comment.message +
+  ' , posted on ' + comment.date + ' with score of: ' + comment.score;
   liElement.innerText = text;
   liElement.style.backgroundColor = comment.score > 0 ? 'green' : 'red';
 
@@ -99,8 +99,8 @@ function noOfComments(selectedValue) {
 */
 function loadComments(noComm = '3') {
   fetch('/comments')
-    .then((response) => response.json())
-    .then((comments) => {
+      .then((response) => response.json())
+      .then((comments) => {
       const commentListElement = document.getElementById('previous_comments');
       commentListElement.innerHTML = '';
       if (noComm > comments.length) noComm = comments.length;
@@ -110,7 +110,7 @@ function loadComments(noComm = '3') {
     });
 }
 
-/** Tells the server to delete the comment. 
+/** Tells the server to delete the comment.
   @param {object} comment to be deleted by id */
 function deleteComment(comment) {
   const params = new URLSearchParams();
@@ -158,8 +158,9 @@ function initMap() {
     lng: 26.096667,
   };
 
-  mapObj['map'] = 
-    new google.maps.Map(document.getElementById('map'), {center: homeBucharestCoords, zoom: 16});
+  mapObj['map'] =
+    new google.maps.Map(document.getElementById('map'),
+    {center: homeBucharestCoords, zoom: 16});
 
   const homeBucharestMarker = new google.maps.Marker({
     position: homeBucharestCoords,
@@ -197,8 +198,9 @@ function fetchMarkers() {
   @param {double} lng longitute
   @param {String} content description */
 function createMarkerForDisplay(lat, lng, content) {
-  const marker = 
-    new google.maps.Marker({position: {lat: lat, lng: lng}, map: mapObj['map']});
+  const marker =
+    new google.maps.Marker({position: {lat: lat, lng: lng},
+    map: mapObj['map']});
 
   const infoWindow = new google.maps.InfoWindow({content: content});
   marker.addListener('click', () => {
@@ -228,10 +230,12 @@ function createMarkerForEdit(lat, lng) {
     mapObj['currentMarker'].setMap(null);
   }
 
-  mapObj['currentMarker'] = 
-    new google.maps.Marker({position: { lat: lat, lng: lng }, map: mapObj['map']});
+  mapObj['currentMarker'] =
+    new google.maps.Marker({position: {lat: lat, lng: lng},
+    map: mapObj['map']});
 
-  const infoWindow = new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
+  const infoWindow =
+  new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
 
   // If the user closes the info window, I remove the marker.
   google.maps.event.addListener(infoWindow, 'closeclick', () => {
@@ -241,9 +245,11 @@ function createMarkerForEdit(lat, lng) {
   infoWindow.open(mapObj['map'], mapObj['currentMarker']);
 }
 
-/** Builds and returns HTML elements that show an editable textbox and a submit button.
+/** Builds and returns HTML elements that
+  show an editable textbox and a submit button.
   @param {double} lat latitute
-  @param {double} lng longitute */
+  @param {double} lng longitute 
+  @return {const}  */
 function buildInfoWindowInput(lat, lng) {
   const textBox = document.createElement('textarea');
   const button = document.createElement('button');
