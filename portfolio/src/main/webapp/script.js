@@ -101,13 +101,13 @@ function loadComments(noComm = '3') {
   fetch('/comments')
       .then((response) => response.json())
       .then((comments) => {
-      const commentListElement = document.getElementById('previous_comments');
-      commentListElement.innerHTML = '';
-      if (noComm > comments.length) noComm = comments.length;
-      for (let i = 0; i < noComm; i++) {
-        commentListElement.appendChild(createListElement(comments[i]));
-      }
-    });
+        const commentListElement = document.getElementById('previous_comments');
+        commentListElement.innerHTML = '';
+        if (noComm > comments.length) noComm = comments.length;
+        for (let i = 0; i < noComm; i++) {
+          commentListElement.appendChild(createListElement(comments[i]));
+        }
+      });
 }
 
 /** Tells the server to delete the comment.
@@ -122,23 +122,23 @@ function deleteComment(comment) {
 /** authentication */
 function authentication() {
   fetch('/login')
-    .then((response) => response.json())
-    .then((user) => {
-      const commentSection = document.getElementById('comm_section');
-      const loginSection = document.getElementById('login');
-      const loginMessage = document.getElementById('login_message');
-      const logoutSection = document.getElementById('logout');
-      console.log(user);
-      if (user.loggedIn) {
-        commentSection.style.display = 'block';
-        loginSection.style.display = 'none';
-        logoutSection.innerHTML = '<br><a href="' + user.url + '">Logout</a>';
-      } else {
-        commentSection.style.display = 'none';
-        loginSection.style.display = 'block';
-        loginMessage.innerHTML += '<a href="' + user.url + '">Login</a>';
-      }
-    });
+      .then((response) => response.json())
+      .then((user) => {
+        const commentSection = document.getElementById('comm_section');
+        const loginSection = document.getElementById('login');
+        const loginMessage = document.getElementById('login_message');
+        const logoutSection = document.getElementById('logout');
+        console.log(user);
+        if (user.loggedIn) {
+          commentSection.style.display = 'block';
+          loginSection.style.display = 'none';
+          logoutSection.innerHTML = '<br><a href="' + user.url + '">Logout</a>';
+        } else {
+          commentSection.style.display = 'none';
+          loginSection.style.display = 'block';
+          loginMessage.innerHTML += '<a href="' + user.url + '">Login</a>';
+        }
+      });
 }
 
 const mapObj = {};
@@ -160,7 +160,7 @@ function initMap() {
 
   mapObj['map'] =
     new google.maps.Map(document.getElementById('map'),
-    {center: homeBucharestCoords, zoom: 16});
+        {center: homeBucharestCoords, zoom: 16});
 
   const homeBucharestMarker = new google.maps.Marker({
     position: homeBucharestCoords,
@@ -185,12 +185,12 @@ function initMap() {
 /** Fetches markers and adds them to the map. */
 function fetchMarkers() {
   fetch('/markers')
-    .then((response) => response.json())
-    .then((markers) => {
-      markers.forEach((marker) => {
-        createMarkerForDisplay(marker.lat, marker.lng, marker.content);
+      .then((response) => response.json())
+      .then((markers) => {
+        markers.forEach((marker) => {
+          createMarkerForDisplay(marker.lat, marker.lng, marker.content);
+        });
       });
-    });
 }
 
 /** Creates a marker that shows a info window
@@ -200,7 +200,7 @@ function fetchMarkers() {
 function createMarkerForDisplay(lat, lng, content) {
   const marker =
     new google.maps.Marker({position: {lat: lat, lng: lng},
-    map: mapObj['map']});
+      map: mapObj['map']});
 
   const infoWindow = new google.maps.InfoWindow({content: content});
   marker.addListener('click', () => {
@@ -232,7 +232,7 @@ function createMarkerForEdit(lat, lng) {
 
   mapObj['currentMarker'] =
     new google.maps.Marker({position: {lat: lat, lng: lng},
-    map: mapObj['map']});
+      map: mapObj['map']});
 
   const infoWindow =
   new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
