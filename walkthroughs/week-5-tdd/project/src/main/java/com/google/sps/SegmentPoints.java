@@ -29,7 +29,7 @@ public final class SegmentPoints implements Comparable<SegmentPoints> {
     // if they are equal, the first point is the one that frees employees
     if (res1 == 0) {
 	if (this.makesBusy) return 1;
-    return -1;
+    else return -1;
     }
     return res1;
   }
