@@ -31,8 +31,8 @@
 
 package com.google.sps;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -42,15 +42,15 @@ import java.util.Set;
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     if (request.getDuration() > 1440) return Arrays.asList();
- 
+
     // this will be our answer.
     Collection<TimeRange> ans = new ArrayList<TimeRange>();
- 
+
     // keep a set with the participants in our meeting
     Set<String> participatingSet = new HashSet<>();
     // the points we are going to iterate through
     List<SegmentPoints> points = new ArrayList<SegmentPoints>();
- 
+
     for (String name : request.getAttendees()) participatingSet.add(name);
     if (participatingSet.size() == 0) return Arrays.asList(TimeRange.WHOLE_DAY);
     // discarding every event that doesn't meet the above req
@@ -60,14 +60,14 @@ public final class FindMeetingQuery {
       for (String name : event.getAttendees()) {
         if (participatingSet.contains(name)) noParticipants += 1;
       }
-    // this means that this event matters for the planning of our meeting
-    // we need to add 2 points, the beginning and the ending of the segment
+      // this means that this event matters for the planning of our meeting
+      // we need to add 2 points, the beginning and the ending of the segment
       if (noParticipants != 0) {
         SegmentPoints auxPointBegin =
-          new SegmentPoints(noParticipants, true, event.getWhen().start());
+            new SegmentPoints(noParticipants, true, event.getWhen().start());
         SegmentPoints auxPointEnd = new SegmentPoints(noParticipants, false, event.getWhen().end());
-          points.add(auxPointEnd);
-          points.add(auxPointBegin);
+        points.add(auxPointEnd);
+        points.add(auxPointBegin);
       }
     }
     // adding 2 more events, one at the beginning of the work program to make everyone free
@@ -105,6 +105,6 @@ public final class FindMeetingQuery {
       }
     }
     return ans;
-// Complexity of the algorithm: O(nlogn), where n is the number of events
+    // Complexity of the algorithm: O(nlogn), where n is the number of events
   }
 }

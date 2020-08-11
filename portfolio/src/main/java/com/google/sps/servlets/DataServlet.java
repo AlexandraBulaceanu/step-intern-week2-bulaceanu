@@ -67,13 +67,13 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json");
     response.getWriter().println(gson.toJson(comments));
   }
- 
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     String message = request.getParameter("comment-input");
     String name = request.getParameter("name-input");
- 
+
     Document doc =
         Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
@@ -90,7 +90,6 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
-    response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section-comments");
-   
+    response.sendRedirect("https://aibulaceanu-step-2020.appspot.com/#section-comments"); 
   }
 }

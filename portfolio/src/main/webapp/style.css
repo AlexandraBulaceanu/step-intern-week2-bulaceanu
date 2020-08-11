@@ -26,13 +26,13 @@ html {
   scroll-behavior: smooth;
 }
 
-.section-intro {
+.section_intro {
   width: 100%;
   flex-direction: column;
   margin-top: -80px;
 }
 
-.section-intro-title {
+.section_intro_title {
   font-size: 7rem;
   font-weight: 800;
   color: aliceblue;
@@ -46,16 +46,17 @@ html {
   margin-top: 100px;
 }
 
-.intro-img {
+.intro_img {
   width: 30rem;
   height: 30rem;
   object-fit: cover;
   background-color: rgba(255, 255, 255, 0.432);
   padding: 0.5rem;
   opacity: 1;
+  margin-top: 10px;
 }
 
-.job-position {
+.job_position {
   font-size: 2.5rem;
   color: aliceblue;
   background-size: 100px 100px;
@@ -69,12 +70,12 @@ html {
   display: block;
 }
 
-.job-position h3 {
+.job_position h3 {
   background-color: teal;
   display: inline-block;
 }
 
-.section-intro-btn1 {
+.section_intro_btn1 {
   font-size: 2rem;
   font-weight: 800;
   color: aliceblue;
@@ -85,16 +86,17 @@ html {
   letter-spacing: 0.3rem;
 }
 
-.section-intro-btn2 {
+.section_intro_btn2 {
   background-color: dodgerblue;
   border: none;
   color: white;
   padding: 12px 30px;
   cursor: pointer;
   font-size: 20px;
+  margin-top: 18px;
 }
 
-.section-intro-btn2:hover {
+.section_intro_btn2:hover {
   background-color: royalblue;
 }
 
@@ -110,7 +112,7 @@ html {
   flex-wrap: wrap;
 }
 
-.navbar-link {
+.navbar_link {
   font-size: 2rem;
   font-weight: 600;
   color: aliceblue;
@@ -120,7 +122,7 @@ html {
   transition: color 0.3rem;
 }
 
-.navbar-link:hover {
+.navbar_link:hover {
   color: blue;
 }
 
@@ -130,7 +132,7 @@ html {
   flex-direction: column;
 }
 
-.row:after {
+.row::after {
   content: "";
   display: table;
   clear: both;
@@ -140,6 +142,7 @@ html {
   float: left;
   padding: 10px;
   width: 100%;
+  background-color: teal;
 }
 
 .projects::after {
@@ -155,6 +158,7 @@ html {
   justify-content: center;
   align-content: center;
 }
+
 .project {
   float: left;
   padding: 10px;
@@ -162,14 +166,17 @@ html {
   display: flex;
   flex-direction: column;
   align-self: center;
+  background-color: teal;
 }
 
-.contact-form {
+.contact_form {
   max-width: 65rem;
   flex-direction: column;
+  background-color: cadetblue;
+  margin-top: 10px;
 }
 
-.comments-form {
+.comments_form {
   max-width: 65rem;
   flex-direction: column;
 }
@@ -213,8 +220,9 @@ input[type="submit"]:hover {
   object-fit: contain;
 }
 
-.section-gallery {
+.section_gallery {
   object-fit: contain;
+  margin-top: 10px;
 }
 
 .image {
@@ -240,8 +248,9 @@ input[type="submit"]:hover {
   border: thick solid black;
 }
 
-.section-blog {
+.section_blog {
   object-fit: contain;
+  margin-top: 10px;
 }
 
 .card {
@@ -265,36 +274,43 @@ input[type="submit"]:hover {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 800px) {
   .posts {
     width: 100%;
     padding: 0;
   }
+
   .navbar {
     height: 11rem;
     flex-direction: column;
   }
 
-  .section-intro-btn2 {
+  .section_intro_btn2 {
     height: 50px;
   }
+
   .icons {
     justify-content: center;
   }
+
   .gallery {
     flex-direction: column;
   }
-  .section-intro-title {
+
+  .section_intro_title {
     margin-top: 150px;
     text-align: center;
     margin-right: 15px;
     object-fit: contain;
   }
+
   .project {
     display: flex;
     flex-direction: column;
     margin-right: 15px;
   }
+
   .column {
     display: flex;
     flex-direction: column;
@@ -344,4 +360,134 @@ input[type="submit"]:hover {
 
 #map {
   border: thin solid black;
+  visibility: visible;
+  height: 60%;
+  width: 60%;
+}
+
+footer {
+  margin-bottom: 5px;
+  background-color: cadetblue;
+  width: 100%;
+  height: 50px;
+}
+
+.section_map {
+  margin-top: 15px;
+}
+
+.commtitle {
+  color: aliceblue;
+  font-size: 30px;
+  background-color: teal;
+}
+
+.comm_title {
+  color: aliceblue;
+  font-size: 20px;
+  background-color: teal;
+}
+
+.hfacts {
+  color: aliceblue;
+  font-size: 30px;
+  background-color: cadetblue;
+}
+
+.pfacts {
+  color: aliceblue;
+  font-size: 15px;
+}
+
+.pfactsu {
+  color: aliceblue;
+  font-size: 15px;
+  margin-top: 13px;
+}
+
+.pfactsmart {
+  color: aliceblue;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.bfacts {
+  font-size: 20px;
+}
+
+.para_map {
+  background-color: cadetblue;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+#logout {
+  background-color: cadetblue;
+  font-size: 25px;
+  color: aliceblue;
+}
+
+.log {
+  background-color: cadetblue;
+  font-size: 25px;
+  color: aliceblue;
+}
+
+.labels {
+  background-color: cadetblue;
+}
+
+.labelcls {
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.area {
+  height: 100px;
+}
+
+.hs {
+  background-color: cadetblue;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+#comm_section {
+  display: none;
+}
+
+.section_comments {
+  margin-top: 15px;
+}
+
+.section_facts {
+  margin-top: 10px;
+}
+
+.section_contact {
+  margin-top: 10px;
+}
+
+.parablog {
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.hblog {
+  color: aliceblue;
+}
+
+.hgal {
+  color: aliceblue;
+  font-size: 20px;
+  background-color: cadetblue;
+  background-size: fit-content;
+}
+
+.section_projects_skills {
+  margin-top: 15px;
+}
+
+.section_description {
+  margin-top: 25px;
 }

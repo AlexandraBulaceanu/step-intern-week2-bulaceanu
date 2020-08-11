@@ -3,6 +3,7 @@ package com.google.sps.data;
 import java.util.Date;
 
 public final class Comment {
+
   private long id;
   private String message;
   private String name;
@@ -30,12 +31,15 @@ public final class Comment {
   public String getMessage() {
     return this.message;
   }
+
   public String getName() {
     return this.name;
   }
+
   public Date getDate() {
     return this.date;
   }
+
   public double getScore() {
     return this.score;
   }

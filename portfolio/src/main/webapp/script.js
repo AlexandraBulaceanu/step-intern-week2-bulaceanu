@@ -23,6 +23,20 @@ myAwesomeScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key
 
 document.head.appendChild(myAwesomeScript);
 
+function loadFontAwsome() {
+  setTimeout(function () {
+    let link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap';
+    document.head.appendChild(link);
+    document.getElementsByClassName('section_intro_btn2')[0].innerHTML = '<span class="fa fa-download"></span> Download CV';
+    document.getElementsByClassName('media_link')[0].innerHTML = '<span class="fab fa-github-square fa-5x"></span>';
+    document.getElementsByClassName('media_link')[1].innerHTML = '<span class="fab fa-facebook-square fa-5x"></span>';
+    document.getElementsByClassName('media_link')[2].innerHTML = '<span class="fab fa-linkedin-square fa-5x"></span>';
+   }, 300);
+}
+
+loadFontAwsome();
 
 /** Gets random fact */
 function addRandomFact() {
@@ -39,20 +53,21 @@ function addRandomFact() {
   const fact = facts[Math.floor(Math.random() * facts.length)];
 
   // Add it to the page.
-  const factContainer = document.getElementById('fact-container');
+  const factContainer = document.getElementById('fact_container');
   factContainer.innerText = fact;
   factContainer.style.fontSize = '20px';
   factContainer.style.color = 'aliceblue';
 }
 
 /** Create list element
-* @param {object} -the object from datastore
-* @return {object} -list element
+* @param {object} comment object from datastore
+* @return {object} liElement list element
 */
 function createListElement(comment) {
   console.log('in createListElement');
   const liElement = document.createElement('li');
-  var text = comment.name + '   added this comment: ' + comment.message + ' , posted on ' + comment.date + ' with score of: ' + comment.score;
+  const text = comment.name + '   added this comment: ' + comment.message + ' , posted on ' 
+    + comment.date + ' with score of: ' + comment.score;
   liElement.innerText = text;
   liElement.style.backgroundColor = comment.score > 0 ? 'green' : 'red';
 
@@ -66,7 +81,7 @@ function createListElement(comment) {
   return liElement;
 }
 
-/**Limits the numbers of comments
+/** Limits the numbers of comments
   @param {object} selectedValue -to limit comments
 */
 function noOfComments(selectedValue) {
@@ -80,14 +95,14 @@ function noOfComments(selectedValue) {
 function loadComments(noComm = '3') {
   fetch('/comments')
     .then((response) => response.json())
-      .then((comments) => {
-        const commentListElement = document.getElementById('previous-comments');
-        commentListElement.innerHTML = '';
-        if (noComm > comments.length) noComm = comments.length;
-          for (var i = 0; i < noComm; i++) {
-            commentListElement.appendChild(createListElement(comments[i]));
-          }
-      });
+    .then((comments) => {
+      const commentListElement = document.getElementById('previous_comments');
+      commentListElement.innerHTML = '';
+      if (noComm > comments.length) noComm = comments.length;
+      for (var i = 0; i < noComm; i++) {
+        commentListElement.appendChild(createListElement(comments[i]));
+      }
+    });
 }
 
 /** Tells the server to delete the comment. 
@@ -96,7 +111,7 @@ function loadComments(noComm = '3') {
 function deleteComment(comment) {
   const params = new URLSearchParams();
   params.append('id', comment.id);
-  fetch('/delete-comments', { method: 'POST', body: params });
+  fetch('/delete-comments', {method: 'POST', body: params});
   loadComments();
 }
 
@@ -104,22 +119,22 @@ function deleteComment(comment) {
 function authentication() {
   fetch('/login')
     .then((response) => response.json())
-      .then((user) => {
-        const commentSection = document.getElementById('comm-section');
-        const loginSection = document.getElementById('login');
-        const loginMessage = document.getElementById('login-message');
-        const logoutSection = document.getElementById('logout');
-        console.log(user);
-        if (user.loggedIn) {
-          commentSection.style.display = 'block';
-          loginSection.style.display = 'none';
-          logoutSection.innerHTML = '<br><a href="' + user.url + '">Logout</a>';
-        } else {
-            commentSection.style.display = 'none';
-            loginSection.style.display = 'block';
-            loginMessage.innerHTML += '<a href="' + user.url + '">Login</a>';
-        }
-      });
+    .then((user) => {
+      const commentSection = document.getElementById('comm_section');
+      const loginSection = document.getElementById('login');
+      const loginMessage = document.getElementById('login_message');
+      const logoutSection = document.getElementById('logout');
+      console.log(user);
+      if (user.loggedIn) {
+        commentSection.style.display = 'block';
+        loginSection.style.display = 'none';
+        logoutSection.innerHTML = '<br><a href="' + user.url + '">Logout</a>';
+      } else {
+        commentSection.style.display = 'none';
+        loginSection.style.display = 'block';
+        loginMessage.innerHTML += '<a href="' + user.url + '">Login</a>';
+      }
+    });
 }
 
 const mapObj = {};
@@ -139,7 +154,8 @@ function initMap() {
     lng: 26.096667,
   };
 
-  mapObj['map'] = new google.maps.Map(document.getElementById('map'), { center: homeBucharestCoords, zoom: 16 });
+  mapObj['map'] = 
+    new google.maps.Map(document.getElementById('map'), {center: homeBucharestCoords, zoom: 16});
 
   const homeBucharestMarker = new google.maps.Marker({
     position: homeBucharestCoords,
@@ -165,22 +181,23 @@ function initMap() {
 function fetchMarkers() {
   fetch('/markers')
     .then((response) => response.json())
-      .then((markers) => {
-        markers.forEach((marker) => {
-          createMarkerForDisplay(marker.lat, marker.lng, marker.content);
-        });
+    .then((markers) => {
+      markers.forEach((marker) => {
+        createMarkerForDisplay(marker.lat, marker.lng, marker.content);
       });
+    });
 }
 
-/** Creates a marker that shows a info window 
+/** Creates a marker that shows a info window
   @param {double} lat latitute
-  @param {double} log longitute
+  @param {double} lng longitute
   @param {String} content description
 */
 function createMarkerForDisplay(lat, lng, content) {
-  const marker = new google.maps.Marker({ position: { lat: lat, lng: lng }, map: mapObj['map'] });
+  const marker = 
+    new google.maps.Marker({position: {lat: lat, lng: lng}, map: mapObj['map']});
 
-  const infoWindow = new google.maps.InfoWindow({ content: content });
+  const infoWindow = new google.maps.InfoWindow({content: content});
   marker.addListener('click', () => {
     infoWindow.open(mapObj['map'], marker);
   });
@@ -188,7 +205,7 @@ function createMarkerForDisplay(lat, lng, content) {
 
 /** Sends a marker to the backend for saving.
   @param {double} lat latitute
-  @param {double} log longitute
+  @param {double} lng longitute
   @param {String} content description
  */
 function postMarker(lat, lng, content) {
@@ -197,12 +214,12 @@ function postMarker(lat, lng, content) {
   params.append('lng', lng);
   params.append('content', content);
 
-  fetch('/markers', { method: 'POST', body: params });
+  fetch('/markers', {method: 'POST', body: params});
 }
 
-/** Creates a marker that shows a textbox the user can edit. 
+/** Creates a marker that shows a textbox the user can edit.
   @param {double} lat latitute
-  @param {double} log longitute
+  @param {double} lng longitute
 */
 function createMarkerForEdit(lat, lng) {
   // If we're already showing an editable marker, then remove it.
@@ -210,9 +227,10 @@ function createMarkerForEdit(lat, lng) {
     mapObj['currentMarker'].setMap(null);
   }
 
-  mapObj['currentMarker'] = new google.maps.Marker({ position: { lat: lat, lng: lng }, map: mapObj['map'] });
+  mapObj['currentMarker'] = 
+    new google.maps.Marker({position: { lat: lat, lng: lng }, map: mapObj['map']});
 
-  const infoWindow = new google.maps.InfoWindow({ content: buildInfoWindowInput(lat, lng) });
+  const infoWindow = new google.maps.InfoWindow({content: buildInfoWindowInput(lat, lng)});
 
   // If the user closes the info window, I remove the marker.
   google.maps.event.addListener(infoWindow, 'closeclick', () => {
@@ -226,7 +244,7 @@ function createMarkerForEdit(lat, lng) {
  * Builds and returns HTML elements that show an editable textbox and a submit
  * button.
   @param {double} lat latitute
-  @param {double} log longitute
+  @param {double} lng longitute
  */
 function buildInfoWindowInput(lat, lng) {
   const textBox = document.createElement('textarea');

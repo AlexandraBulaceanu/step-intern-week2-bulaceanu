@@ -7,95 +7,92 @@
         <script type="text/javascript" src="config.js"></script>
         <script type="text/javascript" src="script.js"></script>
         <script src="https://kit.fontawesome.com/9f16f7b96d.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     </head>
     <body onload="initMap(); authentication(); loadComments();">
         <div class="container">
             <!--Navbar-->
             <nav class="navbar center">
-                <a href="#section-intro" class="navbar-link">Home</a>
-                <a href="#section-description" class="navbar-link">About me</a>
-                <a href="#section-projects-skills" class="navbar-link">Projects</a>
-                <a href="#section-gallery" class="navbar-link">Gallery</a>
-                <a href="#section-blog" class="navbar-link">Blog</a>
-                <a href="#section-facts" class="navbar-link">Facts</a>
-                <a href="#section-contact" class="navbar-link">Contact</a>
-                <a href="#section-comments" class="navbar-link">Comments</a>
-                <a href="#section-map" class="navbar-link">Map</a>
+                <a href="#section_intro" class="navbar_link">Home</a>
+                <a href="#section_description" class="navbar_link">About me</a>
+                <a href="#section_projects-skills" class="navbar_link">Projects</a>
+                <a href="#section_gallery" class="navbar_link">Gallery</a>
+                <a href="#section_blog" class="navbar_link">Blog</a>
+                <a href="#section_facts" class="navbar_link">Facts</a>
+                <a href="#section_contact" class="navbar_link">Contact</a>
+                <a href="#section_comments" class="navbar_link">Comments</a>
+                <a href="#section_map" class="navbar_link">Map</a>
             </nav>
             <div class="sections">
                 <!-- section for introductory content-->
-                <section class="section-intro" id="section-intro">
-                    <h1 class="section-intro-title">Alexandra Irina Bulaceanu</h1>
-                    <p style="color: white; font-size: 15px;">This is my portfolio and my first starter project.</p>
-                    <p style="color: white; font-size: 15px;">
+                <section class="section_intro" id="section_intro">
+                    <h1 class="section_intro_title">Alexandra Irina Bulaceanu</h1>
+                    <p class="pfacts">This is my portfolio and my first starter project.</p>
+                    <p class="pfacts">
                         Hi! My name is Alexandra Bulaceanu and I am a Computer Science student at the University of Bucharest. I also study Economic Informatics at the Academy of Economic Studies. I am currently a STEP intern at Google.
                     </p>
 
-                    <img src="images/me.jpg" alt="me" class="intro-img" style="margin-top: 10px;" />
-                    <div class="job-position">
+                    <img src="images/me.jpg" alt="me" class="intro_img" />
+                    <div class="job_position">
                         <h3>STEP intern</h3>
                     </div>
-                    <a href="#section-facts" class="section-intro-btn1">Fun facts about me</a>
+                    <a href="#section_facts" class="section_intro_btn1">Fun facts about me</a>
                     <br />
-                    <button class="section-intro-btn2" onclick="location.href='https://drive.google.com/file/d/1YU7vHWGkBulJK3KsWFsfuuF3saU-yd5p/view?usp=sharing'" style="margin-top: 18px;">
-                        <span class="fa fa-download"></span>Download CV
-                    </button>
+                    <button class="section_intro_btn2" onclick="location.href='https://drive.google.com/file/d/1YU7vHWGkBulJK3KsWFsfuuF3saU-yd5p/view?usp=sharing'"></button>
                 </section>
                 <!--Section 2 - paragraphs explaining my background-->
-                <section class="section-description" id="section-description" style="margin-top: 25px;">
-                    <h1 class="desc-title" style="color: aliceblue; font-size: 20px; background-color: cadetblue;">About me</h1>
+                <section class="section_description" id="section_description">
+                    <h1 class="para_map">About me</h1>
 
                     <div class="row">
-                        <div class="column" style="background-color: #99d5d5;">
-                            <h2 style="color: aliceblue;">General information</h2>
-                            <p style="color: aliceblue; font-size: 15px;">I am 20 years old. I live in Bucharest(Romania) since I was 6, but I was born in Alexandria.</p>
+                        <div class="column">
+                            <h2 class="hblog">General information</h2>
+                            <p class="pfacts">I am 20 years old. I live in Bucharest(Romania) since I was 6, but I was born in Alexandria.</p>
                         </div>
 
-                        <div class="column" style="background-color: #4cb6b6;" style="margin-top: 10px;">
-                            <h2 style="color: aliceblue;">Education</h2>
-                            <p style="color: aliceblue; font-size: 15px;">
+                        <div class="column">
+                            <h2 class="hblog">Education</h2>
+                            <p class="pfacts">
                                 I graduated from National College of Computer Science "Tudor Vianu" and I am now a student that has just finised the first year at uni. I have completed numerous computer science courses during this time.
                             </p>
                         </div>
 
-                        <div class="column" style="background-color: #009797;" style="margin-top: 10px;">
-                            <h2 style="color: aliceblue;">Why do I like programming</h2>
-                            <p style="color: aliceblue; font-size: 15px;">
+                        <div class="column">
+                            <h2 class="hblog">Why do I like programming</h2>
+                            <p class="pfacts">
                                 I am a coding enthusiast that finds the programming world as being one of the most fascinating things that exist, because of the fact that it is one of the very few context in which you can create your own
                                 universe, establish your very own rules and let your creativity run free and express your mind through all the lines of code. Also it is an area in which you meet extraordinary people and you get the chance
                                 to develop products that really have a positive impact on society. Through computer science you can be a life-changer for somebody. You know, not all heroes wear capes.
                             </p>
                         </div>
 
-                        <div class="column" style="background-color: teal;" style="margin-top: 10px;">
-                            <h2 style="color: aliceblue;">Hobbies</h2>
-                            <p style="color: aliceblue; font-size: 15px;">My hobbies are reading, writing, dancing, listening to music, watching TV series, traveling and learning new languages.</p>
+                        <div class="column">
+                            <h2 class="hblog">Hobbies</h2>
+                            <p class="pfacts">My hobbies are reading, writing, dancing, listening to music, watching TV series, traveling and learning new languages.</p>
                         </div>
                     </div>
                 </section>
 
-                <section class="section-projects-skills" id="section-projects-skills" style="margin-top: 10px;">
-                    <h1 class="section-projects-title" style="color: aliceblue; font-size: 20px; background-color: cadetblue;">Projects</h1>
+                <section class="section_projects_skills" id="section_projects_skills">
+                    <h1 class="hs">Projects</h1>
 
                     <div class="projects">
-                        <div class="project" style="background-color: teal;">
-                            <h2 style="color: aliceblue;">Smart Calendar</h2>
-                            <p style="color: aliceblue; font-size: 15px;">It is a website where you can check what task do you need to complete and which day, designed with javascript, ajax and node.js</p>
+                        <div class="project">
+                            <h2 class="hblog">Smart Calendar</h2>
+                            <p class="pfactsmart">It is a website where you can check what task do you need to complete and which day, designed with javascript, ajax and node.js</p>
                             <a href="https://www.github.com/AlexandraBulaceanu/Proiect-TW--SMART-CALENDAR">Check it out!</a>
                         </div>
-                        <div class="project" style="background-color: teal;">
-                            <h2 style="color: aliceblue;">Supplied</h2>
-                            <p style="color: aliceblue; font-size: 15px; margin-top: 13px;">
+                        <div class="project">
+                            <h2 class="hblog">Supplied</h2>
+                            <p class="pfactsu">
                                 Supplied is a fin-tech application that is specialized in finacial forecasting, planning and budget administration. An ideal shopping list is generated to meet the user's needs.<br />
                                 It was developed with Python, Javascript, MongoDB, Flask. Together with my team we won prizes at the following hackathons: IT Fest, HackTheVirus and Start-up Weekend.
                             </p>
                             <a href="https://www.devpost.com/software/food-tracker-tnhe94">Check it out!</a>
                         </div>
-                        <div class="project" style="background-color: teal;">
-                            <h2 style="color: aliceblue;">RegexToAutomata</h2>
-                            <p style="color: aliceblue; font-size: 15px;">
+                        <div class="project">
+                            <h2 class="hblog">RegexToAutomata</h2>
+                            <p class="pfacts">
                                 This is a project made for the Theory of computation and Automata Theory course in University. <br />
                                 I have used C++ to implement the convertor from a regular expression to a finite automata and Python to generate a photo of the automata.
                             </p>
@@ -104,9 +101,9 @@
                     </div>
                 </section>
 
-                <section class="section-gallery" id="section-gallery" style="margin-top: 10px;">
+                <section class="section_gallery" id="section_gallery">
                     <div id="contentPics">
-                        <h1 style="color: aliceblue; font-size: 20px; background-color: cadetblue; background-size: fit-content;">Gallery of my favourite places</h1>
+                        <h1 class="hgal">Gallery of my favourite places</h1>
                         <div class="gallery">
                             <a href="images/istanbul.jpg"><img alt="city" src="images/istanbul.jpg" /></a>
                             <a href="images/russia.jpg"><img alt="city" src="images/russia.jpg" /></a>
@@ -127,25 +124,25 @@
                     </div>
                 </section>
 
-                <section class="section-blog" id="section-blog" style="margin-top: 10px;">
-                    <h2 style="color: aliceblue; font-size: 20px; background-color: cadetblue;">Blog Posts</h2>
+                <section class="section_blog" id="section_blog">
+                    <h2 class="para_map">Blog Posts</h2>
                     <div class="posts">
                         <div class="card">
-                            <h2 style="color: aliceblue;">Dancing</h2>
+                            <h2 class="hblog">Dancing</h2>
                             <h3>aibulaceanu, Jul 17, 2020</h3>
                             <div class="image"><img alt="blog" src="images/dance.jpg" /></div>
-                            <p style="color: aliceblue; font-size: 20px;">Dance and express yourself</p>
-                            <p style="color: aliceblue; font-size: 20px;">
-                                I have been dancing since I was a child. It brings a lot of happiness to my life. It makes me forget everything. It's just me and the music. I let my moves be guided by the rythm. I have also won a couple of
-                                prizes during dance competitions.
+                            <p class="parablog">Dance and express yourself</p>
+                            <p class="parablog">
+                                > I have been dancing since I was a child. It brings a lot of happiness to my life. It makes me forget everything. It's just me and the music. I let my moves be guided by the rythm. I have also won a couple
+                                of prizes during dance competitions.
                             </p>
                         </div>
                         <div class="card">
-                            <h2 style="color: aliceblue;">Eurovision</h2>
+                            <h2 class="hblog">Eurovision</h2>
                             <h3>aibulaceanu, Jul 16, 2020</h3>
                             <div class="image"><img alt="blog" src="images/eurovision.jpg" /></div>
-                            <p style="color: aliceblue; font-size: 20px;">What does Eurovision mean to me</p>
-                            <p style="color: aliceblue; font-size: 20px;">
+                            <p class="parablog">What does Eurovision mean to me</p>
+                            <p class="parablog">
                                 It means bringing cultures and people together, building bridges betweeen everyone, eliminating all the distances between us, unity in diversity. The most important idea that I have learned from this contest
                                 is the fact that the most beautiful thing that we have in common is that we are all unique.
                             </p>
@@ -153,46 +150,46 @@
                     </div>
                 </section>
 
-                <section class="section-contact" id="section-contact" style="margin-top: 10px;">
-                    <h1 class="contact title" style="color: aliceblue; font-size: 20px; background-color: teal;">Contact Form</h1>
+                <section class="section_contact" id="section_contact">
+                    <h1 class="comm_title">Contact Form</h1>
 
-                    <form class="contact-form" style="background-color: cadetblue; margin-top: 10px;">
-                        <label for="Name" style="color: aliceblue;">Name</label>
+                    <form class="contact_form">
+                        <label for="Name" class="labelcls">Name</label>
                         <input type="text" id="Name" placeholder="Your name" />
-                        <label for="email" style="color: aliceblue;">Email</label>
+                        <label for="email" class="labelcls">Email</label>
                         <br />
                         <input type="email" id="mail" placeholder="Your email" />
                         <br />
-                        <label for="origin" style="color: aliceblue;">Country</label>
+                        <label for="origin" class="labelcls">Country</label>
                         <input type="text" id="origin" placeholder="Where are you from?" />
-                        <label for="subject" style="color: aliceblue;">Your message</label>
-                        <textarea id="subject" placeholder="Write your message" style="height: 200px;"></textarea>
-                        <input type="submit" value="Submit" class="submit-btn" />
+                        <label for="subject" class="labelcls">Your message</label>
+                        <textarea id="subject" placeholder="Write your message" class="area"></textarea>
+                        <input type="submit" value="Submit" class="submit_btn" />
                     </form>
                 </section>
 
-                <section class="section-facts" id="section-facts" style="margin-top: 10px;">
-                    <h1 style="color: aliceblue; font-size: 30px; background-color: cadetblue;">Random facts about me</h1>
-                    <p style="color: aliceblue; font-size: 15px;">Click here to get a random fact about me:</p>
-                    <button onclick="addRandomFact()" style="font-size: 20px;">Get a fact</button>
-                    <div id="fact-container"></div>
+                <section class="section_facts" id="section_facts">
+                    <h1 class="hfacts">Random facts about me</h1>
+                    <p class="pfacts">Click here to get a random fact about me:</p>
+                    <button onclick="addRandomFact()" class="bfacts">Get a fact</button>
+                    <div id="fact_container"></div>
                 </section>
 
-                <section class="section-comments" id="section-comments" style="margin-top: 15px;">
-                    <h1 class="comm title" style="color: aliceblue; font-size: 30px; background-color: teal;">Comments</h1>
+                <section class="section_comments" id="section_comments">
+                    <h1 class="comm_title">Comments</h1>
                     <br />
                     <div id="login">
-                        <h1 style="background-color: cadetblue; font-size: 20px; color: aliceblue;">In order to leave a comment or to read other users' comments, you need to sign in:</h1>
-                        <p id="login-message" style="background-color: cadetblue; font-size: 25px; color: aliceblue;"></p>
+                        <h1 class="hs">In order to leave a comment or to read other users' comments, you need to sign in:</h1>
+                        <p id="login_message" class="log"></p>
                     </div>
-                    <div id="comm-section" style="display: none;">
+                    <div id="comm_section">
                         <br />
-                        <ul id="previous-comments" style="background-color: cadetblue; font-size: 20px; color: aliceblue;"></ul>
+                        <ul id="previous_comments" class="hs"></ul>
                         <br />
-                        <form action="/comments" method="POST" class="comments-form">
-                            <div id="max-no-of-comments">
-                                <h1 style="background-color: cadetblue; font-size: 20px; color: aliceblue;">Select the number of comments you would like to see:</h1>
-                                <select id="no-of-comms" onchange="noOfComments(this);">
+                        <form action="/comments" method="POST" class="comments_form">
+                            <div id="max_no_of_comments">
+                                <h1 class="hs">Select the number of comments you would like to see:</h1>
+                                <select id="no_of_comms" onchange="noOfComments(this);">
                                     <option value="3">3</option>
                                     <option value="5">5</option>
                                     <option value="10">10</option>
@@ -200,41 +197,33 @@
                                     <option value="30">30</option>
                                 </select>
                             </div>
-                            <div style="background-color: cadetblue;">
-                                <label for="Name" style="color: aliceblue; font-size: 20px;">Nickname</label>
-                                <input type="text" name="name-input" placeholder="Your nickname" required />
-                                <label style="color: aliceblue; font-size: 20px;">Your message</label>
-                                <textarea name="comment-input" placeholder="Add your comment" style="height: 100px;"></textarea>
+                            <div class="labels">
+                                <label class="labelcls" for="Name">Nickname</label>
+                                <input type="text" name="name_input" placeholder="Your nickname" required />
+                                <label class="labelcls">Your message</label>
+                                <textarea name="comment_input" class="area" placeholder="Add your comment"></textarea>
                                 <input type="submit" value="Submit your comment" />
                                 <br />
-                                <p id="logout" style="background-color: cadetblue; font-size: 25px; color: aliceblue;"></p>
+                                <p id="logout"></p>
                             </div>
                         </form>
                     </div>
                 </section>
 
-                <section class="section-map" id="section-map" style="margin-top: 15px;">
-                    <h1 class="comm title" style="color: aliceblue; font-size: 30px; background-color: teal;">Going places</h1>
+                <section class="section_map" id="section_map">
+                    <h1 class="commtitle">Going places</h1>
                     <br />
-                    <p style="background-color: cadetblue; font-size: 20px; color: aliceblue;">You can check out some of my favourite places in Bucharest. Let me know if you also know some great places by sharing them on the map below:)</p>
+                    <p class="para_map">You can check out some of my favourite places in Bucharest. Let me know if you also know some great places by sharing them on the map below:)</p>
                     <br />
-                    <div id="map" style="visibility: visible; height: 60%; width: 60%;"></div>
+                    <div id="map"></div>
                 </section>
             </div>
             <br />
-            <footer class="section-media" style="margin-bottom: 5px; background-color: cadetblue; width: 100%; height: 50px;">
-                <!--<div class="icons-title" style="color:aliceblue; font-size:15px; text-align:centre;">
-            -->
+            <footer class="section_media">
                 <div class="icons">
-                    <a href="https://www.github.com/AlexandraBulaceanu" class="social-media-link">
-                        <span class="fab fa-github-square fa-5x"></span>
-                    </a>
-                    <a href="https://www.facebook.com/alexandrairina.bulaceanu" class="social-media-link">
-                        <span class="fab fa-facebook-square fa-5x"></span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/alexandra-irina-bulaceanu-091787154" class="social-media-link">
-                        <span class="fab fa-linkedin-square fa-5x"></span>
-                    </a>
+                    <a href="https://www.github.com/AlexandraBulaceanu" class="media_link"> </a>
+                    <a href="https://www.facebook.com/alexandrairina.bulaceanu" class="media_link"> </a>
+                    <a href="https://www.linkedin.com/in/alexandra-irina-bulaceanu-091787154" class="media_link"> </a>
                 </div>
             </footer>
         </div>
