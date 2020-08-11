@@ -7,8 +7,8 @@ public final class SegmentPoints implements Comparable<SegmentPoints> {
 
   public SegmentPoints(int noParticipants, boolean makesBusy, int time) {
     this.noParticipants = noParticipants;
-  this.makesBusy = makesBusy;
-  this.time = time;
+    this.makesBusy = makesBusy;
+    this.time = time;
   }
 
   public int getNoParticipants() {
@@ -20,17 +20,17 @@ public final class SegmentPoints implements Comparable<SegmentPoints> {
   }
 
   public int getTime() {
-  return this.time;
+    return this.time;
   }
 
   @Override
   public int compareTo(SegmentPoints secondPoint) {
     int res1 = this.time - secondPoint.time;
-  // if they are equal, the first point is the one that frees employees
-  if (res1 == 0) {
-	if (this.makesBusy) return 1;
-	return -1;
-  }
-  return res1;
+    // if they are equal, the first point is the one that frees employees
+    if (res1 == 0) {
+	  if (this.makesBusy) return 1;
+	  return -1;
+    }
+    return res1;
   }
 }
