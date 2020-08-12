@@ -27,10 +27,7 @@ public final class SegmentPoints implements Comparable<SegmentPoints> {
   public int compareTo(SegmentPoints secondPoint) {
     int res1 = this.time - secondPoint.time;
     // if they are equal, the first point is the one that frees employees
-    if (res1 == 0) {
-	if (this.makesBusy) return 1;
-    else return -1;
-    }
+    if (res1 == 0) return this.makesBusy ? 1 : -1;
     return res1;
   }
 }
